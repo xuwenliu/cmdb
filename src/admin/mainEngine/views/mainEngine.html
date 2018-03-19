@@ -1,7 +1,7 @@
 <div id="content">
 	<section widget-grid id="widget-grid">
 		<div class="row">
-			<article class="col-sm-12">
+			<!-- <article class="col-sm-12">
 				<div id="todo-widget" jarvis-widget data-widget-editbutton="false" data-widget-color="blue">
 					<header>
 						<span class="widget-icon">
@@ -17,7 +17,7 @@
 					</header>
 					<div>
                         <div class="widget-body tab-content">
-                            <!--头部筛选查找以及添加-->
+                            <!--头部筛选查找以及添加
                             <div class="widget-body-toolbar" ng-show="newTodo">
                                 <div class="form-horizontal">
                                     <div class="row">
@@ -171,7 +171,214 @@
                         </div>
                     </div>
 				</div>
-			</article>
+			</article> -->
+            <article class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+                
+                            <!-- Widget ID (each widget will need unique ID)-->
+                            <div class="jarviswidget well transparent" id="wid-id-9" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false" role="widget">
+                                <!-- widget options:
+                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+                
+                                data-widget-colorbutton="false"
+                                data-widget-editbutton="false"
+                                data-widget-togglebutton="false"
+                                data-widget-deletebutton="false"
+                                data-widget-fullscreenbutton="false"
+                                data-widget-custombutton="false"
+                                data-widget-collapsed="true"
+                                data-widget-sortable="false"
+                
+                                -->
+                                <header role="heading">
+                                    <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+                                    <h2>Accordions </h2>
+                
+                                <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span></header>
+                
+                                <!-- widget div-->
+                                <div role="content">
+                
+                                    <!-- widget edit box -->
+                                    <div class="jarviswidget-editbox">
+                                        <!-- This area used as dropdown edit box -->
+                
+                                    </div>
+                                    <!-- end widget edit box -->
+                
+                                    <!-- widget content -->
+                                    <div class="widget-body" style="background: #f3f3f3;">
+                                        <!-- 基本信息 -->
+                                        <div class="panel-group smart-accordion-default" id="accordion">
+                                            <div class="panel panel-default" style="margin-bottom: 10px;">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" class=""> <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>基本信息</a></h4>
+                                                </div>
+                                                <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="true" style="">
+                                                    <div class="panel-body">
+                                                       <div class="row">
+                                                            <div class="col-md-1 col-xs-4 col-lg-1  input-label">ID:</div>
+                                                            <div class="col-md-2 col-xs-8 col-lg-3">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control inp_2" placeholder="请输入" ng-model="content">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-1 col-xs-4 col-lg-1  input-label">*品牌:</div>
+                                                            <div class="col-md-2 col-xs-8 col-lg-3">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control inp_2" placeholder="请输入品牌" ng-model="content">
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-md-1 col-xs-4 col-lg-1  input-label">*型号:</div>
+                                                            <div class="col-md-2 col-xs-8 col-lg-3">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control inp_2" placeholder="请输入型号" ng-model="content">
+                                                                </div>
+                                                            </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                            <div class="col-md-1 col-xs-4 col-lg-1  input-label">授权码:</div>
+                                                            <div class="col-md-2 col-xs-8 col-lg-3">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control inp_2" placeholder="请输入授权码" ng-model="content">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-1 col-xs-4 col-lg-1  input-label">*SN:</div>
+                                                            <div class="col-md-2 col-xs-8 col-lg-3">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control inp_2" placeholder="请输入SN" ng-model="content">
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-md-1 col-xs-4 col-lg-1  input-label">*备注:</div>
+                                                            <div class="col-md-2 col-xs-8 col-lg-3">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control inp_2" placeholder="请输入备注" ng-model="content">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- OS信息 -->
+                                            <div class="panel panel-default" style="margin-bottom: 10px;">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed" aria-expanded="true"> <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>OS信息</a></h4>
+                                                </div>
+                                                <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="true">
+                                                    <div class="panel-body">
+               
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- CPU -->
+                                            <div class="panel panel-default" style="margin-bottom: 10px;">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed" aria-expanded="true"> <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>*CPU</a></h4>
+                                                </div>
+                                                <div id="collapseThree" class="panel-collapse collapse" aria-expanded="true">
+                                                    <div class="panel-body">
+           
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 内存 -->
+                                            <div class="panel panel-default" style="margin-bottom: 10px;">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class="collapsed" aria-expanded="true"> <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>*内存</a></h4>
+                                                </div>
+                                                <div id="collapseFour" class="panel-collapse collapse" aria-expanded="true">
+                                                    <div class="panel-body">
+           
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 硬盘 -->
+                                            <div class="panel panel-default" style="margin-bottom: 10px;">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" class="collapsed" aria-expanded="true"> <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>*硬盘</a></h4>
+                                                </div>
+                                                <div id="collapseFive" class="panel-collapse collapse" aria-expanded="true">
+                                                    <div class="panel-body">
+           
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- RAID卡 -->
+                                            <div class="panel panel-default" style="margin-bottom: 10px;">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" class="collapsed" aria-expanded="true"> <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>*RAID卡</a></h4>
+                                                </div>
+                                                <div id="collapseSix" class="panel-collapse collapse" aria-expanded="true">
+                                                    <div class="panel-body">
+           
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- IPMI -->
+                                            <div class="panel panel-default" style="margin-bottom: 10px;">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" class="collapsed" aria-expanded="true"> <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>*IPMI</a></h4>
+                                                </div>
+                                                <div id="collapseSeven" class="panel-collapse collapse" aria-expanded="true">
+                                                    <div class="panel-body">
+           
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- 网卡 -->
+                                            <div class="panel panel-default" style="margin-bottom: 10px;">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseEight" class="collapsed" aria-expanded="true"> <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>*网卡</a></h4>
+                                                </div>
+                                                <div id="collapseEight" class="panel-collapse collapse" aria-expanded="true">
+                                                    <div class="panel-body">
+           
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- 用户 -->
+                                            <div class="panel panel-default" style="margin-bottom: 10px;">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseNine" class="collapsed" aria-expanded="true"> <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>*用户</a></h4>
+                                                </div>
+                                                <div id="collapseNine" class="panel-collapse collapse" aria-expanded="true">
+                                                    <div class="panel-body">
+           
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- 业务 -->
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseTen" class="collapsed" aria-expanded="true"> <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>*业务</a></h4>
+                                                </div>
+                                                <div id="collapseTen" class="panel-collapse collapse" aria-expanded="true">
+                                                    <div class="panel-body">
+           
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                
+                                    </div>
+                                    <!-- end widget content -->
+                
+                                </div>
+                                <!-- end widget div -->
+                
+                            </div>
+                            <!-- end widget -->
+                
+                        </article>
 		</div>
 	</section>
 </div>

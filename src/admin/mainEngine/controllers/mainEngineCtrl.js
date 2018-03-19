@@ -13,7 +13,7 @@ angular.module('app.MainEngine').controller('MainEngineCtrl', function($scope, p
     	if(res.data.code === 20000){
     		$scope.mainEngineArea = res.data.data.data;
     	}else {
-    		popupSvc.smallBox("fail", response.msg);
+    		popupSvc.smallBox("fail", res.msg);
     	}
     })
     $scope.paginationConf = {
@@ -41,7 +41,7 @@ angular.module('app.MainEngine').controller('MainEngineCtrl', function($scope, p
         		$scope.paginationConf.totalItems = res.data.meta.count;
 	    		$scope.hostList = res.data.data.data;
 	    	}else {
-	    		popupSvc.smallBox("fail", response.msg);
+	    		popupSvc.smallBox("fail", res.msg);
 	    	}
     	})
     }
