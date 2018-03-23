@@ -1,7 +1,184 @@
 <div id="content">
-    客户管理
+	<section widget-grid id="widget-grid">
+		<div class="row">
+			<article class="col-sm-12">
+				<div id="todo-widget" jarvis-widget data-widget-editbutton="false" data-widget-color="blue">
+					<header>
+						<span class="widget-icon">
+							<i class="fa fa-table"></i>
+						</span>
+						<div class="widget-toolbar">
+                            <button class="btn btn-xs btn-col-fff" ng-class="{active: newTodo}" ng-click="toggleAdd()"><i ng-class="{ 'fa fa-plus': !newTodo, 'fa fa-times': newTodo}"></i> 筛选</button>
+							<button class="btn btn-col-fff btn-xs" data-toggle="modal" data-target="#addCustomerModal">新增客户</button>
+						</div>
+					</header>
 
 
+					<div>
+                        <div class="widget-body tab-content">
+                            <!--头部筛选查找以及添加-->
+                            <div class="widget-body-toolbar" ng-show="newTodo">
+                                <div class="form-horizontal">
+                            		<div class="row">
+                            			<div class="col-md-2 col-xs-4 ">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control inp_2" placeholder="客户姓名" ng-model="filter.username">
+                                            </div>
+                                		</div>
+                                		<div class="col-sm-1 col-xs-2 text-center col-xs-offset-0 col-md-offset-0">
+                                    		<div class="form-group">
+                                        		<a class="btn btn-default search" ng-click="search(filter)" href-void>搜索</a>
+                                    		</div>
+                                		</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <form class="form-inline" method="post">
+                                <div class="table-scroll">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">客户名</th>
+                                                <th class="text-center">Skype</th>
+                                                <th class="text-center">QQ</th>
+                                                <th class="text-center">电话</th>
+                                                <th class="text-center">微信</th>
+                                                <th class="text-center">邮箱</th>
+                                                <th class="text-center">负责人</th>
+                                                <th class="text-center">订单（进行中/待续费/已过期）</th>
+                                                <th class="text-center">操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="g in hostList"  class="text-center">
+                                                <td><a class="text-red" ng-click="goMainEngineDetail(g.ids)">{{g.username}}</a></td>
+                                                <td>{{g.skype}}</td>
+                                                <td>{{g.qq}}</td>
+                                                <td>{{g.phone}}</td>
+                                                <td>{{g.wechat}}</td>
+                                                <td>{{g.email}}</td>
+                                                <td>{{g.dutyEmail}}</td>
+                                                <td>{{g.orderIn}}/{{g.orderRenew}}/{{g.orderOver}}</td>
+                                                <td>
+                                                    <button class="btn btn-xs btn-primary" ng-click="updateMainEngine(g.id)">修改</button>
+                                                    <button class="btn btn-xs btn-danger" ng-click="updateMainEngine(g.id)">删除</button>
+                                                </td>
+                                            </tr>
 
-    
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <tm-pagination conf="paginationConf"></tm-pagination>
+
+
+                            </form>
+                        </div>
+                    </div>
+				</div>
+			</article>
+		</div>
+	</section>
 </div>
+
+
+
+
+<!--新增主机弹框-->
+    <div class="modal fade" id="addCustomerModal" tabindex="-1" role="dialog" aria-labelledby="addAccount" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="addAccount">主机归属</h4>
+                </div>
+                <div class="modal-body">
+                        <div class="row">
+                        	<div class="col-md-1 col-xs-4 col-lg-4 input-label">区域：</div>
+	                		<div class="col-md-2 col-xs-4 col-lg-4">
+	                			<div class="form-group" ng-init="g.areaId='0'">
+	                                <select class="form-control" ng-model="g.areaId">
+	                                    <option value="0">全部</option>
+	                                    <option ng-value="i.value" ng-repeat="i in mainEngineArea">{{i.title}}</option>
+	                                </select>
+	                            </div>
+	                		</div>
+                        </div>
+                        <div class="row">
+                        	<div class="col-md-1 col-xs-4 col-lg-4 input-label">机房：</div>
+	                		<div class="col-md-2 col-xs-4 col-lg-4">
+	                			<div class="form-group" ng-init="g.roomId='0'">
+	                                <select class="form-control" ng-model="g.roomId">
+	                                    <option value="0">全部</option>
+	                                    <option ng-value="i.value" ng-repeat="i in mainEngineRoom">{{i.title}}</option>
+	                                </select>
+	                            </div>
+	                		</div>
+                        </div>
+                        <div class="row">
+
+                        	<div class="col-md-1 col-xs-4 col-lg-4 input-label">机柜：</div>
+	                		<div class="col-md-2 col-xs-4 col-lg-4">
+	                			<div class="form-group" ng-init="g.cabinetId='0'">
+	                                <select class="form-control" ng-model="g.cabinetId">
+	                                    <option value="0">全部</option>
+	                                    <option ng-value="i.value" ng-repeat="i in mainEngineCabinet">{{i.title}}</option>
+	                                </select>
+	                            </div>
+	                		</div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="addCustomerModalSure(g)">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<!--绑定负责人弹框-->
+    <div class="modal fade" id="bindLeaderModal" tabindex="-1" role="dialog" aria-labelledby="bindLeader" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="bindLeader">绑定负责人</h4>
+                </div>
+                <div class="modal-body">
+                        <div class="row">
+                        	<div class="col-md-1 col-xs-4 col-lg-4 input-label">主负责人：</div>
+	                		<div class="col-md-2 col-xs-4 col-lg-5">
+	                			<div class="form-group" ng-init="dutyId='0'">
+	                                <select class="form-control" ng-model="dutyId">
+	                                    <option value="0">请选择</option>
+	                                    <option ng-value="o.id" ng-repeat="o in dutyObj.duty">{{o.name}}</option>
+	                                </select>
+	                            </div>
+	                		</div>
+                        </div>
+                        <div class="row">
+                        	<div class="col-md-1 col-xs-4 col-lg-4 input-label">副负责人：</div>
+	                		<div class="col-md-2 col-xs-4 col-lg-5">
+	                			<div class="form-group">
+
+	                                <select class="form-control selectpicker" title="请选择" multiple data-max-options="2">
+	                                    <!--<option value="id">name</option> jquery塞进来的-->
+	                                </select>
+
+
+	                            </div>
+	                		</div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="bindLeaderModalSure(hostList,dutyId)">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
