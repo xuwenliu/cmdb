@@ -37,6 +37,7 @@
       "angular-translate",
       "ng-file-upload",
       "bootstrap-datetimepicker",
+      "bootstrap-select",
       "angular-filemanager",
       "jquery.marquee"
     ],
@@ -139,6 +140,7 @@
     "jquery-form": "bower_components/jquery-form/jquery.form",
     "bootstrap-validator": "bower_components/bootstrapvalidator/dist/js/bootstrapValidator.min.js",
     "bootstrap-datetimepicker": "bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
+    "bootstrap-select":"bower_components/bootstrap-select/dist/js/bootstrap-select.min.js",
     "clockpicker": "bower_components/clockpicker/dist/bootstrap-clockpicker.min.js",
     "nouislider": "bower_components/nouislider/distribute/jquery.nouislider.min.js",
     "ionslider": "bower_components/ion.rangeSlider/js/ion.rangeSlider.min.js",
@@ -161,7 +163,7 @@
     "smartwidgets": "smartadmin-plugin/smartwidgets/jarvis.widget.min.js",
     "notification": "smartadmin-plugin/notification/SmartNotification.min.js",
     "angular-translate":"bower_components/angular-translate/angular-translate.min.js",
-      "ng-file-upload":"bower_components/ng-file-upload/ng-file-upload.min.js",
+    "ng-file-upload":"bower_components/ng-file-upload/ng-file-upload.min.js",
     "angular-filemanager":"bower_components/angular-filemanager/dist/angular-filemanager.min.js",
     "jquery.marquee":"bower_components/jquery.marquee/jquery.marquee.min.js"
   }

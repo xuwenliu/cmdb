@@ -1,0 +1,271 @@
+<div id="content">
+    <section widget-grid id="widget-grid">
+		<div class="row">
+			<article class="col-sm-12">
+				<div id="todo-widget" jarvis-widget data-widget-editbutton="false" data-widget-color="blue">
+					<header>
+						<span class="widget-icon">
+							<i class="fa fa-table"></i>
+                        </span>
+                        <h2>总数: {{totalNumber}}</h2>
+						<div class="widget-toolbar">
+                        	<button class="btn btn-xs btn-col-fff" ng-class="{active: newTodo}" ng-click="toggleAdd()"><i ng-class="{ 'fa fa-plus': !newTodo, 'fa fa-times': newTodo}"></i> 筛选</button>
+                    		<button class="btn btn-primary" ng-click="showAccountAddOrAlter()">新增账号</button>
+						</div>
+					</header>
+					<div>
+                        <div class="widget-body tab-content">
+                            <div class="widget-body-toolbar" ng-show="newTodo">
+                                <div class="form-horizontal">
+                                    <div class="col-md-2 col-xs-12 col-sm-2 col-lg-1 input-label">状态：</div>
+                                    <div class="col-md-2 col-xs-12 col-sm-3">
+                                        <div class="form-group" ng-init="status='0'">
+                                            <select name="" id="" ng-model="form.status" class="form-control">
+                                                <option value="">全部</option>
+                                                <option value="1">启用</option>
+                                                <option value="2">停用</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-xs-12 col-sm-3">
+                                        <input type="text" ng-model="form.username" class="form-control" placeholder="操作人姓名">
+                                    </div>
+                                    <div class="col-md-2 col-xs-12 col-sm-2">
+                                        <button class="btn btn-default " ng-click="getAccountList()">搜索</button>
+                                    </div><br><br>
+                                </div>
+                            </div>
+                            <form class="form-inline" method="post">
+                                <div class="table-scroll">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">登录名</th>
+                                                <th class="text-center">姓名</th>
+                                                <th class="text-center">状态</th>
+                                                <th class="text-center">角色</th>
+                                                <th class="text-center">最后登录时间</th>
+                                                <th class="text-center">邮箱</th>
+                                                <th class="text-center">操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in accounts" class="text-center">
+                                                <td>
+                                                    <a href="javascript:;" ng-click="accountMsg(item)">{{item.account}}</a>
+                                                </td>
+                                                <td>{{item.username}}</td>
+                                                <td class="text-red" ng-show="item.status==2">{{item.status|fiterStatused}}</td>
+                                                <td class="text-green" ng-show="item.status==1">{{item.status|fiterStatused}}</td>
+                                                <td>{{item.roleName}}</td>
+                                                <td>{{item.lastTime|fiterTime}}</td>
+                                                <td>{{item.email}}</td>
+                                                <td>
+                                                    <button class="btn btn-primary btn-xs" ng-click="getAccountPower(item.id)">权限</button>
+                                                    <button class="btn btn-default btn-xs" ng-click="showAccountAddOrAlter(item)">修改</button>
+                                                    <button class="btn btn-danger btn-xs" ng-click="delAccount(item.id)">删除</button>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <tm-pagination conf="paginationConf"></tm-pagination>
+                            </form>
+                        </div>
+                    </div>
+				</div>
+			</article>
+		</div>
+	</section>
+
+    <!-- 查看账号 -->
+    <div class="modal fade" id="accountMsg" tabindex="-1" role="dialog" aria-labelledby="addAccount" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="addAccount">查看账号</h4>
+                </div>
+                <div class="modal-body">
+                        <div>
+                            <label for="">登录名：</label>
+                            {{account.account}}
+                        </div>
+                        <div>
+                            <label for="">登录密码：</label>
+                            {{account.password}}
+                        </div>
+                        <div>
+                            <label for="">操作人姓名：</label>
+                            {{account.username}}
+                        </div>
+                        <div>
+                            <label for="">操作人角色：</label>
+                            {{account.roleName}}
+                        </div>
+                        <div>
+                            <label for="">email：</label>
+                            {{account.email}}
+                        </div>
+                        <div>
+                            <label for="">状态：</label>
+                            {{account.status|fiterStatused}}
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 添加/修改账号 -->
+    <div class="modal fade" id="accountAddOrAlter" tabindex="-1" role="dialog" aria-labelledby="addAccount" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="addAccount">{{handleMsg}}</h4>
+                </div>
+                <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-1 col-xs-4 col-lg-4 input-label">登录名：</div>
+                            <div class="col-md-2 col-xs-4 col-lg-4">
+                                <div class="form-group" ng-init="roomId='0'">
+                                    <input type="text" class="form-control" ng-model="account.account">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1 col-xs-4 col-lg-4 input-label">登录密码：</div>
+                            <div class="col-md-2 col-xs-4 col-lg-4">
+                                <div class="form-group" ng-init="roomId='0'">
+                                    <input type="text" class="form-control" ng-model="account.account">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1 col-xs-4 col-lg-4 input-label">确认密码：</div>
+                            <div class="col-md-2 col-xs-4 col-lg-4">
+                                <div class="form-group" ng-init="roomId='0'">
+                                    <input type="text" class="form-control" ng-model="account.account">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1 col-xs-4 col-lg-4 input-label">姓名：</div>
+                            <div class="col-md-2 col-xs-4 col-lg-4">
+                                <div class="form-group" ng-init="roomId='0'">
+                                    <input type="text" class="form-control" ng-model="account.username">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1 col-xs-4 col-lg-4 input-label">角色：</div>
+                            <div class="col-md-2 col-xs-4 col-lg-4">
+                                <div class="form-group" ng-init="roomId='0'">
+                                    <select name="" ng-model="roleId" class="form-control">
+                                        <option value="{{role.id}}" ng-repeat="role in roles">{{role.title}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1 col-xs-4 col-lg-4 input-label">邮箱：</div>
+                            <div class="col-md-2 col-xs-4 col-lg-4">
+                                <div class="form-group" ng-init="roomId='0'">
+                                    <input type="text" class="form-control" ng-model="account.email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1 col-xs-4 col-lg-4 input-label">状态：</div>
+                            <div class="col-md-2 col-xs-4 col-lg-4">
+                                <input type="checkbox" class="modal-checkbox" ng-model="account.status" ng-true-value="1" ng-false-value="2">
+                                <span class="modal-status">启用</span>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addOrAlterAccount()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 权限修改 -->
+    <div class="modal fade" id="powerModal" tabindex="-1" role="dialog" aria-labelledby="addAccount" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="addAccount">{{handleMsg}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default" ng-repeat="pw in powers">
+                            <div class="panel-heading" role="tab" id="{{pw.title}}">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{pw.title+1}}" aria-expanded="true" aria-controls="collapseOne">
+                                    {{pw.title}}
+                                </a>
+                                <input type="checkbox" ng-model="pw.checked" ng-true-value="1" ng-false-value="0" ng-change="allChecked(pw)">
+                            </h4>
+                            </div>
+                            <div id="{{pw.title+1}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="{{pw.title}}">
+                            <div class="panel-body">
+                                <div ng-repeat="bp in pw.backPowers">
+                                    {{bp.title}}
+                                    <input type="checkbox" name="" ng-model="bp.checked" ng-true-value="1" ng-false-value="0" ng-change="changeCheckbox(pw)">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="alterAccountPower()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .modal-body label{
+        width:120px;
+        text-align: right;
+        margin-left: calc(50% - 120px);
+        font-size: 14px;
+    }
+    .modal-checkbox{
+        width:20px;
+        height:20px
+    }
+    .modal-status{
+        display: inline-block;
+        transform: translateY(-5px);
+    }
+    .panel-group input{
+        float:right;
+        width:18px;
+    }
+    .panel-body input{
+        margin-right:15px;
+    }
+    .panel-body div{
+        height:26px;
+        line-height: 26px;
+        padding-left:15px;
+    }
+    .panel-body{
+        padding:15px 0;
+    }
+</style>

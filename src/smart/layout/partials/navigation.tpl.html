@@ -18,21 +18,74 @@
                 <a data-ui-sref="app.Platform.accountHolder" title="Outlook">
                     <i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">测试页面</span></a>
             </li>
+
+
             <li data-menu-collapse>
                 <a data-ui-sref="app.MainEngine.mainEngine" title="Outlook">
-                    <i class="fa fa-lg fa-fw fa-home"></i> 
-                    <span class="menu-item-parent">资源池管理</span>
-                </a>
+                    <i class="fa fa-lg fa-fw fa-home"></i>
+                    <span class="menu-item-parent">资源池管理</span></a>
                 <ul>
                     <li data-ui-sref-active="active">
                         <a data-ui-sref="app.MainEngine.mainEngine">主机</a>
                     </li>
                     <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.home.home">路由器</a>
+                        <a data-ui-sref="app.MainEngine.router">路由器</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.MainEngine.area">区域</a>
                     </li>
                 </ul>
             </li>
 
+            <li data-menu-collapse>
+                <a data-ui-sref="app.Business.customer" title="Outlook">
+                    <i class="fa fa-lg fa-fw fa-home"></i>
+                    <span class="menu-item-parent">业务管理</span></a>
+                <ul>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.Business.customer">客户管理</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.home.home">订单管理</a>
+                    </li>
+                </ul>
+            </li>
+            <li data-ui-sref-active="">
+                <a data-ui-sref="app.Message.message" title="Outlook">
+                    <i class="fa fa-lg fa-fw fa-home"></i>
+                    <span class="menu-item-parent">消息中心</span>
+                </a>
+            </li>
+            <li data-ui-sref-active="">
+                <a data-ui-sref="app.Log.log" title="Outlook">
+                    <i class="fa fa-lg fa-fw fa-home"></i>
+                    <span class="menu-item-parent">日志管理</span>
+                </a>
+            </li>
+            <li data-ui-sref-active="">
+                <a data-ui-sref="app.Account.account" title="Outlook">
+                    <i class="fa fa-lg fa-fw fa-home"></i>
+                    <span class="menu-item-parent">账号管理</span>
+                </a>
+            </li>
+            <li data-ui-sref-active="">
+                <a data-ui-sref="app.Role.role" title="Outlook">
+                    <i class="fa fa-lg fa-fw fa-home"></i>
+                    <span class="menu-item-parent">角色管理</span>
+                </a>
+            </li>
+            <li data-ui-sref-active="">
+                <a data-ui-sref="app.Menu.list" title="Outlook">
+                    <i class="fa fa-lg fa-fw fa-home"></i>
+                    <span class="menu-item-parent">菜单管理</span>
+                </a>
+            </li>
+            <li data-ui-sref-active="">
+                <a data-ui-sref="app.Power.list" title="Outlook">
+                    <i class="fa fa-lg fa-fw fa-home"></i>
+                    <span class="menu-item-parent">功能管理</span>
+                </a>
+            </li>
         </ul>
     </nav>
 

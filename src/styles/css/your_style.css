@@ -1068,7 +1068,30 @@ nav ul li{cursor: pointer}
 .ng-border-left{border-left:1px solid #ccc}
 .ng-border-left>i{cursor: pointer}
 
+
 /*clear*/
 .clearfix {zoom:1;}
 .clearfix::after,.clearfix::before{content:"";display:block;clear: both;visibility: hidden;height:0}
 .clear{clear:both;}
+
+/*margin-top*/
+.mgt10{margin-top: 10px!important;}
+.mgt20{margin-top: 20px!important;}
+
+/*margin-bottom*/
+.mgb10{margin-bottom: 10px!important;}
+.mgb20{margin-bottom: 20px!important;}
+
+/*margin-left*/
+.mgl10{margin-left: 10px!important;}
+.mgl20{margin-left: 20px!important;}
+
+/* padding */
+.pdr0{padding-right: 0!important;}
+
+/* border */
+.noBorder{border: none!important;}
+
+/*float*/
+.fl{float:left;}
+.fr{float: right;}

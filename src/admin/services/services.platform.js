@@ -1,6 +1,9 @@
 angular.module("services.platform", [])
     .service("PlatformService", PlatformService);
 
+angular.module("app.person", [])
+    .service("PlatformService", PlatformService);
+
 PlatformService.$inject = ['APP_CONFIG', 'httpSvc'];
 
 //管理员
@@ -73,7 +76,7 @@ function PlatformService(APP_CONFIG, httpSvc) {
         getSiteCloumnPut: getSiteCloumnPut, // 站点栏目--修改提交	PUT/siteCloumn
         getSiteCloumnGet: getSiteCloumnGet, // 站点栏目	GET/siteCloumn
         getLog: getLog, // 日志管理	GET/log
-        getOperation: getOperation // 操作记录	GET/operation
+        getOperation: getOperation, // 操作记录	GET/operation
     };
     // 操作记录	GET/operation
     function getOperation(postData) {
@@ -1031,6 +1034,4 @@ function PlatformService(APP_CONFIG, httpSvc) {
 
         }
     }
-
-
 }

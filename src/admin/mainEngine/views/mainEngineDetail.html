@@ -1,0 +1,611 @@
+
+<style>
+	.bgRow>div {
+		background-color: #ccc;
+		padding: 5px;
+	}
+
+	.rowBorder {
+		border: 1px solid #ccc;
+	}
+
+	.rowBorder:nth-of-type(1),
+	.rowBorder:nth-of-type(2),
+	.rowBorder:nth-of-type(3),
+	.rowBorder:nth-of-type(4) {
+		border-right: none;
+	}
+
+	.rowBorder input {
+		border: none;
+	}
+
+	.rowBorder .input-group-addon {
+		border: none;
+	}
+
+    .smart-timeline-icon{
+        display: inline-block;
+        background:#d9d9d9;
+        width:10px;
+        height:10px;
+        border-radius: 50%;
+        border: 2px solid #309bfb;
+        left:91px;
+        top:18px;
+        z-index: 3;
+    }
+    .smart-timeline-content{margin-left: 112px;}
+
+</style>
+
+<div id="content">
+	<section widget-grid id="widget-grid">
+		<div class="row">
+			<article class="col-sm-12">
+				<div id="todo-widget" jarvis-widget data-widget-editbutton="false" data-widget-color="blue">
+					<header>
+						<span class="widget-icon">
+							<i class="fa fa-table"></i>
+						</span>
+                        <h2>查看主机</h2>
+					</header>
+                    <div style="width:70%;" class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+						<!-- Widget ID (each widget will need unique ID)-->
+						<div class="jarviswidget well transparent" id="wid-id-9" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false" role="widget">
+							<!-- widget options:
+                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+                                data-widget-colorbutton="false"
+                                data-widget-editbutton="false"
+                                data-widget-togglebutton="false"
+                                data-widget-deletebutton="false"
+                                data-widget-fullscreenbutton="false"
+                                data-widget-custombutton="false"
+                                data-widget-collapsed="true"
+                                data-widget-sortable="false"
+                                -->
+							<!-- widget div-->
+							<div role="content">
+								<!-- widget content -->
+								<div class="widget-body" style="background: #f3f3f3;">
+
+
+									<!-- 基本信息 -->
+									<div class="panel-group smart-accordion-default" id="accordion">
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" aria-expanded="true" class="">  <i class="fa fa-lg fa-angle-up pull-right"></i>基本信息</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true" style="">
+												<div class="panel-body">
+													<div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label pdr0">ID:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div style="line-height: 32px;">
+																{{hostDetail.ids}}
+															</div>
+														</div>
+
+
+                                                        <div class="col-md-1 col-xs-4 col-lg-1  input-label pdr0">位置:</div>
+                                                        <div class="col-md-2 col-xs-8 col-lg-3">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.areaName}}/ {{hostDetail.roomName}}/ {{hostDetail.cabinetName}}
+                                                            </div>
+                                                        </div>
+
+
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label pdr0">品牌:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.brand}}
+                                                            </div>
+														</div>
+                                                    </div><!-- row -end -->
+
+                                                    <div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label pdr0">型号:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.model}}
+                                                            </div>
+														</div>
+
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label pdr0">授权码:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.authorize}}
+                                                            </div>
+														</div>
+
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label pdr0">SN:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.sn}}
+                                                            </div>
+														</div>
+                                                    </div><!-- row -end -->
+
+                                                    <div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label pdr0">备注:</div>
+														<div class="col-md-2 col-xs-8 col-lg-7">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.remark}}
+                                                            </div>
+														</div>
+                                                        <div class="col-md-1 col-xs-4 col-lg-1  input-label pdr0">状态:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+                                                            <div style="line-height: 32px;">
+                                                                状态无字段
+                                                            </div>
+														</div>
+													</div><!-- row -end -->
+
+                                                    <div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-2  input-label pdr0">创建时间:</div>
+														<div class="col-md-2 col-xs-8 col-lg-10">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.createTime | date:'yyyy-MM-dd HH:mm'}}
+                                                            </div>
+														</div>
+													</div><!-- row -end -->
+											</div>
+										</div>
+                                    </div>
+
+										<!-- OS信息 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i>OS信息</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+                                                    <div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-2  input-label pdr0">系统:</div>
+														<div class="col-md-2 col-xs-8 col-lg-4">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.system}}
+                                                            </div>
+														</div>
+
+                                                        <div class="col-md-1 col-xs-4 col-lg-2  input-label pdr0">内核版本:</div>
+														<div class="col-md-2 col-xs-8 col-lg-4">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.kernelVersion}}
+                                                            </div>
+														</div>
+													</div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- CPU -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i>CPU</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+													<div class="row bgRow"><!-- row -start -->
+														<div class="text-center col-md-1 col-xs-2 col-lg-2  col-md-offset-1 col-lg-offset-1">型号</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">个数</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">核心</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">线程</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">主频</div>
+													</div><!-- row -end -->
+
+													<div class="row form-group"><!-- row -start -->
+														<div class="col-md-1 col-xs-2 col-lg-2 col-md-offset-1 col-lg-offset-1 rowBorder">
+															<div class="input-group">
+                                                                <span class="input-group-addon">{{hostDetail.cpuModel}}</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+                                                                <span class="input-group-addon">{{hostDetail.cpuNum}}</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<span class="input-group-addon">{{hostDetail.cpuCore}}核心</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+                                                                <span class="input-group-addon">{{hostDetail.cpuLine}}线程</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<span class="input-group-addon">{{hostDetail.cpuFreq}}GHz</span>
+															</div>
+														</div>
+													</div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- 内存 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i>内存</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+													<div class="row form-group"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-1 col-md-offset-1 col-lg-offset-1 input-label pdr0">大小:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.memorySize}}G
+                                                            </div>
+														</div>
+
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label pdr0">类型:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.memoryType}}
+                                                            </div>
+														</div>
+													</div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- 硬盘 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i>硬盘</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+													<div class="row bgRow"><!-- row -start -->
+														<div class="text-center col-md-1 col-xs-5 col-lg-5  col-md-offset-1 col-lg-offset-1">类型</div>
+														<div class="text-center col-md-1 col-xs-5 col-lg-5">容量</div>
+													</div><!-- row -end -->
+
+													<!-- 遍历硬盘数组 -start -->
+													<div class="row form-group" ng-repeat="hd in hostDetail.hardDisk track by $index"><!-- row -start -->
+														<div class="col-md-1 col-xs-5 col-lg-5 col-md-offset-1 col-xs-offset-1 col-lg-offset-1 rowBorder">
+															<div class="input-group col-md-1 col-xs-10 col-lg-10 col-lg-offset-1">
+                                                                <span class="input-group-addon">{{hd.hardDisk==1?"HHD":"SSD"}}</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-5 col-lg-5 rowBorder" style="border-right:1px solid #ccc;">
+															<div class="input-group">
+																<span class="input-group-addon">{{hd.hdCapacity}}GB</span>
+															</div>
+														</div>
+													</div><!-- row -start -->
+													<!-- 遍历硬盘数组 -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- RAID卡 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i>RAID卡</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+                                                    <div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-2  input-label pdr0">型号:</div>
+														<div class="col-md-2 col-xs-8 col-lg-4">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.raidCardModel}}
+                                                            </div>
+														</div>
+
+                                                        <div class="col-md-1 col-xs-4 col-lg-2  input-label pdr0">RAID等级:</div>
+														<div class="col-md-2 col-xs-8 col-lg-4">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.raidCardLevel==0?"未使用":""}}
+                                                            </div>
+														</div>
+													</div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- IPMI -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i>IPMI</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+                                                    <div class="row"><!-- row -start -->
+                                                        <div class="col-md-1 col-xs-4 col-lg-1  input-label pdr0">IP:</div>
+                                                        <div class="col-md-2 col-xs-8 col-lg-3">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.ipmiIp}}
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="col-md-1 col-xs-4 col-lg-1  input-label pdr0">MAC:</div>
+                                                        <div class="col-md-2 col-xs-8 col-lg-3">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.ipmiMac}}
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="col-md-1 col-xs-4 col-lg-2  input-label pdr0">USER账户:</div>
+                                                        <div class="col-md-2 col-xs-8 col-lg-2">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.ipmiAccount}}
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- row -end -->
+
+                                                    <div class="row"><!-- row -start -->
+                                                        <div class="col-md-1 col-xs-4 col-lg-2  input-label pdr0">USER密码:</div>
+                                                        <div class="col-md-2 col-xs-8 col-lg-1">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.ipmiPassword}}
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-1 col-xs-4 col-lg-2  input-label pdr0">接口连接:</div>
+                                                        <div class="col-md-2 col-xs-8 col-lg-5">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.ipmiRouteId}} {{hostDetail.ipmiNozzle}}
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- 网卡 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i>网卡</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+													<div class="row bgRow"><!-- row -start -->
+														<div class="text-center col-md-1 col-xs-2 col-lg-2  col-md-offset-1 col-lg-offset-1">网卡名</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">IP</div>
+														<div class="text-center col-md-1 col-xs-3 col-lg-3">MAC</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">接口速率</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">接口</div>
+													</div><!-- row -end -->
+
+													<!-- 遍历网卡数组 -start -->
+                                                    <div class="row form-group" ng-repeat="nt in hostDetail.networkCard track by $index"><!-- row -start -->
+														<div class="col-md-1 col-xs-2 col-lg-2 col-md-offset-1 col-lg-offset-1 rowBorder">
+															<div class="input-group">
+                                                                <span class="input-group-addon">{{nt.title}}</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+                                                                <span class="input-group-addon">{{nt.ip}}</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-3 col-lg-3 rowBorder">
+															<div class="input-group">
+																<span class="input-group-addon">{{nt.mac}}</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+                                                                <span class="input-group-addon">{{nt.rate}}M</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<span class="input-group-addon">交换机{{nt.nozzle}}口</span>
+															</div>
+														</div>
+													</div><!-- row -end -->
+													<!-- 遍历网卡数组 -end -->
+
+												</div>
+											</div>
+										</div>
+
+
+										<!-- 用户 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i>用户</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+                                                    <div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-2  input-label pdr0">账号:</div>
+														<div class="col-md-2 col-xs-8 col-lg-4">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.username}}
+                                                            </div>
+														</div>
+
+                                                        <div class="col-md-1 col-xs-4 col-lg-2  input-label pdr0">密码:</div>
+														<div class="col-md-2 col-xs-8 col-lg-4">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.password}}
+                                                            </div>
+														</div>
+													</div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- 业务 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i>业务</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+                                                    <div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-2  input-label pdr0">月租:</div>
+														<div class="col-md-2 col-xs-8 col-lg-4">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.rent | currency:'':2}}
+                                                            </div>
+														</div>
+
+                                                        <div class="col-md-1 col-xs-4 col-lg-2  input-label pdr0">订单号:</div>
+														<div class="col-md-2 col-xs-8 col-lg-4">
+                                                            <div style="line-height: 32px;">
+                                                                <a href="">{{hostDetail.orderId}}</a>
+                                                            </div>
+														</div>
+													</div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+
+                                        <!-- 负责人 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i>负责人</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+                                                    <div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-2  input-label pdr0">主负责人:</div>
+														<div class="col-md-2 col-xs-8 col-lg-4">
+                                                            <div style="line-height: 32px;">
+                                                                {{hostDetail.dutyName}}
+                                                            </div>
+														</div>
+
+                                                        <div class="col-md-1 col-xs-4 col-lg-2  input-label pdr0">副负责人:</div>
+														<div class="col-md-2 col-xs-8 col-lg-4">
+                                                            <div style="line-height: 32px;">
+                                                                <span ng-repeat="leader in hostDetail.spareDuty">{{leader.name}}
+                                                                    <i ng-if="$index != hostDetail.spareDuty.length-1">、</i></span>
+                                                            </div>
+														</div>
+													</div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+                                        <!-- IP列表 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i>IP列表</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+													<div class="row bgRow"><!-- row -start -->
+														<div class="text-center col-md-1 col-xs-2 col-lg-2  col-md-offset-1 col-lg-offset-1">IP</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">区域</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">机房</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">机柜</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">月租</div>
+													</div><!-- row -end -->
+
+													<!-- 遍历网卡数组 -start -->
+                                                    <div class="row form-group" ng-repeat="v in hostDetail.ip track by $index"><!-- row -start -->
+														<div class="col-md-1 col-xs-2 col-lg-2 col-md-offset-1 col-lg-offset-1 rowBorder">
+															<div class="input-group">
+                                                                <span class="input-group-addon">{{v.ip}}</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+                                                                <span class="input-group-addon">{{v.areaName}}</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<span class="input-group-addon">{{v.roomName}}</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+                                                                <span class="input-group-addon">{{v.cabinetName}}</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<span class="input-group-addon">{{v.rent}}</span>
+															</div>
+														</div>
+													</div><!-- row -end -->
+													<!-- 遍历网卡数组 -end -->
+
+												</div>
+											</div>
+										</div>
+
+    									<div class="clearfix">
+    										<button class="btn btn-primary fr" ng-click="deleteHost(hostDetail)">删除</button>
+    									</div>
+                                
+									</div>
+								</div>
+								<!-- end widget content -->
+							</div>
+							<!-- end widget div -->
+						</div>
+						<!-- end widget -->
+					</div>
+					<!--end-ui-sortable-->
+                    <!-- 操作日志-start -->
+                    <div class= "noBorder" style="width:30%">
+                        <div class="panel-group smart-accordion-default">
+                            <div class="panel panel-default mgb20" style="border:none;border-bottom:1px solid #c3c3c3;">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a>操作日志</a>
+                                    </h4>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- ng-repeat="log in logs" -->
+                        <!-- row -->
+        				<div class="row">
+        					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        						<div class="well well-sm">
+        							<!-- Timeline Content -->
+        							<div class="smart-timeline">
+        								<ul class="smart-timeline-list">
+        									<li ng-repeat="log in logs">
+        										<div class="smart-timeline-icon">
+
+        										</div>
+        										<div class="smart-timeline-time">
+        											<small>{{log.createTime}}</small>
+        										</div>
+        										<div class="smart-timeline-content">
+                                                    <p>操作人：{{log.operationName}}</p>
+                                                    <p>设备ID：{{log.diveceId}}</p>
+                                                    <p>类型：{{log.mold}}</p>
+                                                    <p>动态描述：{{log.remark}}</p>
+        										</div>
+        									</li>
+        								</ul>
+        							</div>
+        							<!-- END Timeline Content -->
+        						</div>
+        					</div>
+        				</div>
+        				<!-- end row -->
+
+                    </div>
+                    <!-- 操作日志 -end -->
+
+
+                </div>
+            </article>
+        </div>
+    </section>
+</div>

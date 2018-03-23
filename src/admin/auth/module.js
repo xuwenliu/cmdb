@@ -11,6 +11,7 @@ angular.module('app.auth', [
         }
 
     })
+    
 
     .state('modifyPwd', {
         url: '/modifyPwd',

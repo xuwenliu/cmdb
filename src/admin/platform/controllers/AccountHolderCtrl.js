@@ -61,7 +61,7 @@ angular.module('app.Platform').controller('AccountHolderCtrl', function($scope, 
                 }
             })
         };
-        popupSvc.smartMessageBox($rootScope.getWord("confirmationOperation"), sure);
+        popupSvc.smartMessageBox("是否确认此操作？", sure);
     };
     //点击搜索
     $scope.search = function() {

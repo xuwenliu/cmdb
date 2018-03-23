@@ -5,7 +5,7 @@ angular.module('app.Platform', [
         .state('app.Platform', {
             abstract: true,
             data: {
-                title: 'Platform'
+                title: '管理员'
             },
             resolve: {
                 srcipts: function(lazyScript) {
@@ -19,8 +19,7 @@ angular.module('app.Platform', [
     .state('app.Platform.accountHolder', {
         url: '/Platform/accountHolder',
         data: {
-            // title: '开户人管理'
-            title: 'A_10'
+            title: '开户人管理'
         },
         views: {
             "content@app": {

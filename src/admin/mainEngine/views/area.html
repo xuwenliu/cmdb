@@ -1,0 +1,86 @@
+<div id="content">
+        <section widget-grid id="widget-grid">
+            <div class="row">
+                <article class="col-sm-12">
+                    <div id="todo-widget" jarvis-widget data-widget-editbutton="false" data-widget-color="blue">
+                        <header>
+                            <span class="widget-icon">
+                                <i class="fa fa-table"></i>
+                            </span>
+                            <h2>总数: {{totalNumber}}</h2>
+                            <div class="widget-toolbar">
+                                <button class="btn btn-primary" ng-click="showEdit()">新增区域</button>
+                            </div>
+                        </header>
+                        <div>
+                            <div class="widget-body tab-content">
+                                <form class="form-inline" method="post">
+                                    <div class="table-scroll">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">区域名</th>
+                                                    <th class="text-center">区域名缩写</th>
+                                                    <th class="text-center">机房数</th>
+                                                    <th class="text-center">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="item in areas" class="text-center">
+                                                    <td>{{item.title}}</td>
+                                                    <td>{{item.omit}}</td>
+                                                    <td>{{item.roomNum}}</td>
+                                                    <td>
+                                                        <button class="btn btn-default btn-xs" ng-click="showEdit(item)">修改</button>
+                                                        <button class="btn btn-danger btn-xs" ng-click="delArea(item.id)">删除</button>
+                                                    </td>
+                                                </tr>
+                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <tm-pagination conf="paginationConf"></tm-pagination>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    
+        <!-- 添加、修改区域 -->
+        <div class="modal fade" id="area" tabindex="-1" role="dialog" aria-labelledby="addAccount" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="addAccount">{{modalName}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-1 col-xs-4 col-lg-4 input-label">区域名：</div>
+                            <div class="col-md-2 col-xs-4 col-lg-4">
+                                <div class="form-group" ng-init="roomId='0'">
+                                    <input type="text" class="form-control" ng-model="area.title" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1 col-xs-4 col-lg-4 input-label">区域缩写：</div>
+                            <div class="col-md-2 col-xs-4 col-lg-4">
+                                <div class="form-group" ng-init="roomId='0'">
+                                    <input type="text" class="form-control" ng-model="area.omit" required ng-pattern="^/a-zA-Z/+$" placeholder="只能输入英文字母">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="editArea()">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

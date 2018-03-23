@@ -37,15 +37,27 @@ angular.module('app', [
         'app.auth',
         'app.home',
         'app.Platform',
-        'app.MainEngine',
-
+        'app.MainEngine', //主机
+        'app.Business', //业务管理
+        'app.person',
+        'app.Role', //角色
+        'app.Power', //功能管理
+        'app.Account',
+        'app.Menu', //菜单管理
+        'app.Log',
+        'app.Message',
 
         'services.auth',
+        'services.message',
+        'services.log',
+        'services.account',
         'services.platform',
-        'services.mainEngine',
-        
-        'services.announce'
-
+        'services.mainEngine', //主机
+        'services.business', //业务管理-客户管理/订单管理
+        'services.power',
+        'services.announce',
+        'services.role', //角色
+        'services.menu' //菜单
     ]).config(function($provide, $httpProvider, RestangularProvider) {
 
         // Intercept http calls.
@@ -90,10 +102,12 @@ angular.module('app', [
         //$httpProvider.interceptors.push('ErrorHttpInterceptor');
         // $httpProvider.interceptors.push('HttpInterceptor');
 
-        RestangularProvider.setBaseUrl(location.pathname.replace(/[^\/]+?$/, ''));
+        RestangularProvider.setBaseUrl(location.pathname.replace(/[^\/]+?$/,
+            ''));
 
     }).constant('APP_CONFIG', window.appConfig)
-    .run(function($rootScope, $http, $state, $stateParams, Language, AuthService, APP_CONFIG, $LocalStorage, popupSvc,$location) {
+    .run(function($rootScope, $http, $state, $stateParams, Language,
+        AuthService, APP_CONFIG, $LocalStorage, popupSvc, $location) {
         $rootScope.lang = {};
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;

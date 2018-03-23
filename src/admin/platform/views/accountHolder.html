@@ -10,6 +10,10 @@
                         <div class="widget-toolbar">
                             <button class="btn btn-xs btn-col-fff" ng-class="{active: newTodo}" ng-click="toggleAdd()"><i ng-class="{ 'fa fa-plus': !newTodo, 'fa fa-times': newTodo}"></i> 筛选</button>
                         </div>
+
+                        <div class="widget-toolbar">
+                            <button class="btn btn-xs btn-col-fff" ng-class="{active: newTodo}" data-toggle="modal" data-target="#myModal1">添加</button>
+                        </div>
                     </header>
                     <div>
                         <div class="widget-body tab-content">
@@ -114,179 +118,25 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         &times;
                     </button>
-                    <h4 class="modal-title" id="addAccount">{{getWord('Add Account')}}</h4>
+                    <h4 class="modal-title" id="addAccount">添加</h4>
                 </div>
                 <div class="modal-body">
                     <form enctype="multipart/form-data" class="smart-form client-form ng-pristine ng-valid" novalidate="novalidate" method='POST'>
-                        <fieldset>
-                            <section class="input-item">
-                                <div class="col-md-3 col-xs-4 input-label">{{getWord('accounts')}}</div>
-                                <label class="col-md-7 col-xs-8 input">
-                                    <!--<i class="icon-append fa fa-user"></i>-->
-                                    <input type="text" name="account" placeholder="{{getWord('accounts')}}" ng-model="addForm.account">
-                                    <b class="tooltip tooltip-top-right">
-                                        <!--<i class="fa fa-user txt-color-teal"></i>-->
-                                        账号长度6-12位，只能字母和数字组合</b>
-                                </label>
-                            </section>
-                            <section class="input-item">
-                                <label class="col-md-3 col-xs-4 input-label">{{getWord('Password')}}</label>
-                                <label class="col-md-7 col-xs-8 input">
-                                    <input type="password"  placeholder="{{getWord('Password')}}" ng-model="addForm.password">
-                                    <b class="tooltip tooltip-top-right">
-                                        密码长度6-12位，只能字母和数字组合</b>
-                                </label>
-                            </section>
-                            <section class="input-item">
-                                <label class="col-md-3 col-xs-4 input-label">{{getWord('Confirm password')}}</label>
-                                <label class="col-md-7 col-xs-8 input">
-                                    <input type="password" name="account" placeholder="{{getWord('Confirm password')}}" ng-model="addForm.rePassword">
-                                    <b class="tooltip tooltip-top-right">
-                                        密码长度6-12位，只能字母和数字组合</b>
-                                </label>
-                            </section>
-                            <section class="input-item">
-                                <label class="col-md-3 col-xs-4 input-label">开户人</label>
-                                <label class="col-md-7 col-xs-8 input">
-                                    <input type="text"  placeholder="开户人{{getWord('Name')}}" ng-model="addForm.username">
-                                    <b class="tooltip tooltip-top-right">
-                                    账号长度2-30位，只能字母和数字组合</b>
-                                </label>
-                            </section>
-                            <section class="input-item">
-                                <label class="col-md-3 col-xs-4 input-label">{{getWord('Operation password')}}</label>
-                                <label class="col-md-7 col-xs-8 input">
-                                    <input type="password"  placeholder="{{getWord('Operation password')}}" ng-model="addForm.operatePassword">
-                                    <b class="tooltip tooltip-top-right">
-                                        密码长度6-12位，只能字母和数字组合</b>
-                               </label>
-                            </section>
-                            <section class="input-item">
-                                <label class="col-md-3 col-xs-4 input-label">{{getWord('客户后台域名')}}</label>
-                                <label class="col-md-7 col-xs-8 input">
-                                    <input type="text"  placeholder="{{getWord('客户后台域名')}}" ng-model="addForm.manageDomain">
-                                    <b class="tooltip tooltip-top-right">
-                                        请输入正确域名格式,必须以http://开头</b>
-                               </label>
-                            </section>
-                            <section class="input-item">
-                                <label class="col-md-3 col-xs-4 input-label">{{getWord('currentState')}}</label>
-                                <label class="col-md-4 col-xs-4 input-label text-left">
-                                    <input type="radio" ng-value="1" name="status" ng-model="addForm.status">
-                                    {{lang['Enables']}}
-                                </label>
-                                <label class="col-md-4 col-xs-4 input-label text-left">
-                                    <input type="radio" ng-value="2" name="status" ng-model="addForm.status">
-                                    {{lang['Disable']}}
-                                </label>
-                            </section>
-                            <section class="input-item">
-                                <label class="col-md-3 col-xs-4 input-label">{{getWord('Remarks')}}</label>
-                                <label class="col-md-7 col-xs-8 input">
-                                    <textarea rows="5" class="form-control" ng-model="addForm.remark"></textarea>
-                                </label>
-                            </section>
-
-                        </fieldset>
+                        12121212
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#myModal3">
-                        下一步
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        取消
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        确定
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!--站点设置-->
-    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="addAccount" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h4 class="modal-title">{{getWord('DefaultSiteSettings')}}</h4>
-                </div>
-                <div class="modal-body">
-                    <form enctype="multipart/form-data" class="smart-form client-form ng-pristine ng-valid" novalidate="novalidate" method='POST'>
-                        <fieldset>
-                            <section class="input-item">
-                                <div class="col-md-3 col-xs-5 input-label">{{getWord('siteName')}}</div>
-                                <label class="col-md-7 col-xs-7 input">
-                                    <input type="text" name="account" placeholder="请输入站点名称" ng-model="addForm.siteName">
-                                    <b class="tooltip tooltip-top-right">
-                                        请输入2-25位数，由字母和数字组成</b>
-                                </label>
-                            </section>
-                            <section class="input-item">
-                                <div class="col-md-3 col-xs-5 input-label">{{getWord('SiteID')}}</div>
-                                <label class="col-md-7 col-xs-7 input">
-                                    <input type="text" name="account" placeholder="请输入站点ID" ng-model="addForm.site">
-                                    <b class="tooltip tooltip-top-right">
-                                        请输入1-4位数，由字母和数字组成</b>
-                                </label>
-                            </section>
-                            <section class="input-item">
-                                <div class="col-md-3 col-xs-5 input-label">{{getWord('SiteFrontDeskID')}}</div>
-                                <label class="col-md-7 col-xs-7 input">
-                                    <input type="text" name="account" placeholder="请输入站点前台ID" ng-model="addForm.siteIndex">
-                                    <b class="tooltip tooltip-top-right">
-                                        请输入1-4位数，由字母和数字组成</b>
-                                </label>
-                            </section>
-                            <section class="input-item">
-                                <div class="col-md-3 col-xs-5 input-label">{{getWord('代理后台域名')}}</div>
-                                <label class="col-md-7 col-xs-7 input">
-                                    <input type="text" name="account" placeholder="代理后台域名" ng-model="addForm.agencyDomain">
-                                    <b class="tooltip tooltip-top-right">
-                                        请输入正确的域名格式,必须以http://开头</b>
-                                </label>
-                            </section>
-                            <section class="input-item">
-                                <label class="col-md-3 col-xs-5 input-label">{{getWord('DomainNameUpperLimit')}}</label>
-                                <label class="col-md-7 col-xs-7 input">
-                                    <input type="number" min="1" ng-model="addForm.domainUp">
-                                    <b class="tooltip tooltip-top-right">
-                                        默认最小为1</b>
-                                </label>
-                            </section>
-                            <section class="input-item">
-                                <label class="col-md-3 col-xs-5 input-label">{{getWord('ExceedTheUpperLimit')}}</label>
-                                <label class="col-md-7 col-xs-4 input">
-                                    <input type="number" min="1" name="account" ng-model="addForm.upCose">
-                                    <b class="tooltip tooltip-top-right">
-                                        超出域名上限每个域名加收费最小为一元</b>
-                                </label>
-                                <label class="col-md-2 col-xs-3 input-label">{{getWord('Yuan/unit')}}</label>
-                            </section>
-                            <section class="input-item">
-                                <label class="col-md-3 col-xs-5 input-label">{{getWord('ChoiceOfSetMeal')}}</label>
-                                <label class="col-md-7 col-xs-7 input">
-                                    <div class="form-group" ng-init="addForm.comboId=''">
-                                        <select class="form-control" ng-model="addForm.comboId">
-                                            <option value="">请选择</option>
-                                            <option ng-value="item.id" ng-repeat="item in packageList">{{item.comboName}}</option>
-                                        </select>
-                                    </div>
-                                </label>
-                            </section>
-
-                        </fieldset>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#myModal1">
-                        上一步
-                    </button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addAcount()">
-                        {{getWord('Confirm')}}
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!--编辑-->
     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">

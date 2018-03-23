@@ -1,0 +1,150 @@
+<div id="content">
+    <section widget-grid id="widget-grid">
+        <div class="row">
+            <article class="col-sm-12">
+                <div id="todo-widget" jarvis-widget data-widget-editbutton="false" data-widget-color="blue">
+                    <header>
+                        <span class="widget-icon">
+                            <i class="fa fa-table"></i>
+                        </span>
+                        <h2>总数: {{totalNumber}}</h2>
+                        <div class="widget-toolbar">
+                            <button class="btn btn-xs btn-col-fff" ng-class="{active: newTodo}" ng-click="toggleAdd()"><i ng-class="{ 'fa fa-plus': !newTodo, 'fa fa-times': newTodo}"></i> 筛选</button>
+                        </div>
+                    </header>
+                    <div class="widget-body tab-content">
+                        <div class="widget-body-toolbar" ng-show="newTodo">
+                            <form class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-md-2 col-xs-3 col-sm-2 col-lg-2 input-label">选择日期：</div>
+                                    <div class="col-md-2 col-xs-9 col-sm-10 col-lg-2">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" name="mydate" placeholder="Select a date" class="form-control datepicker messageTime" data-smart-datepicker options="datepickerOptions" data-date-format="DD/MM/YY" ng-model="form.time">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 col-sm-2 col-xs-6">
+                                        <button class="btn btn-default btn-block" ng-click="getMessageList()">搜索</button>
+                                    </div>
+                                    <div class="col-md-2 col-xs-9 col-sm-10 col-lg-2 col-offset-3">
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" ng-click="readAll('all')">全部标记为已读</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class=" col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                            <div class="message message-{{msg.status==1?'red':'green'}}" ng-repeat="msg in messages" ng-click="showMsg(msg)">
+                                <div class="msg-left">
+                                    <img src="http://bpic.588ku.com/element_origin_min_pic/16/12/09/a873139086fba6a0b4f5e7f80129d6b0.jpg" alt="" class="msg-icon">
+                                    <div class="msg-status">{{msg.status==1?"未读":"已读"}}</div>
+                                </div>
+                                <div class="msg-right">
+                                    <p>{{msg.content}}</p>
+                                    <p>{{msg.time}}</p>
+                                </div>
+                            </div>
+                            <tm-pagination conf="paginationConf"></tm-pagination>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
+<!-- 导出excel选择日期 -->
+<div class="modal fade" id="message" tabindex="-1" role="dialog" aria-labelledby="addAccount" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="addAccount">消息内容</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{message.content}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="readAll()">知道了</button>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .input-label{
+        width:110px;
+    }
+    .form-input{
+        margin-bottom:15px;
+    }
+    .message{
+        width:100%;
+        min-height: 150px;
+        border:1px solid #ebebeb;
+        border-radius: 3px;
+        padding:20px;
+        margin-bottom:15px;
+        position: relative;
+        transition: all .3s;
+        cursor: pointer;
+    }
+    .message:hover{
+        box-shadow: 0 0 5px 3px #eee;
+    }
+    .message-red::before{
+        content: "";
+        width: 0; 
+        height: 0; 
+        right:0;
+        top:0;
+        position: absolute;
+        border-top: 35px solid red; 
+        border-left: 46px solid transparent; 
+    }
+    .message-green::before{
+        content: "";
+        width: 0; 
+        height: 0; 
+        right:0;
+        top:0;
+        position: absolute;
+        border-top: 35px solid #00cc33; 
+        border-left: 46px solid transparent; 
+    }
+    .message .msg-status{
+        position: absolute;
+        top:0;
+        right:0;
+        color:#fff;
+        margin:3px 3px 0 0;
+        font-size: 12px;
+    }
+    .msg-left{
+        width:80px;
+        height:inherit;
+        padding:0 20px;
+        float:left;
+    }
+    .msg-right{
+        overflow: hidden;
+        height:inherit;
+        padding-left:15px;
+    }
+    .msg-right p{
+        font-size: 14px;
+    }
+    .msg-icon{
+        width:40px;
+        height:40px;
+    }
+    .msg-right p:nth-of-type(2){
+        color:#ccc;
+    }
+    .modal-title{
+        text-align: center;
+    }
+</style>

@@ -2,49 +2,50 @@
 angular.module('app.filter', []);
 angular.module('app.filter')
 
-.filter('fiterTime', function() {
-    return function(nS) {
-        if (nS === 0 | nS === null | !nS | nS === "") {
-            return "";
+    .filter('fiterTime', function () {
+        return function (nS) {
+            if (nS === 0 | nS === null | !nS | nS === "") {
+                return "";
+            }
+            ;
+
+            function add0(m) {
+                return m < 10 ? '0' + m : m
+            };
+            var time = new Date(parseInt(nS) * 1000);
+            var y = time.getFullYear();
+            var m = time.getMonth() + 1;
+            var d = time.getDate();
+            var h = time.getHours();
+            var mm = time.getMinutes();
+            var s = time.getSeconds();
+            return y + '-' + add0(m) + '-' + add0(d) + ' ' + add0(h) + ':' + add0(mm) + ':' + add0(s);
         };
+    })
 
-        function add0(m) {
-            return m < 10 ? '0' + m : m
+    .filter('outStatus', function () {
+
+        return function (value) {
+            var status = "";
+            if (value === 1) {
+                status = "已出款";
+            } else if (value === 2) {
+                status = "预备出款";
+            } else if (value === 3) {
+                status = "已取消";
+            } else if (value === 4) {
+                status = "已拒绝";
+            } else if (value === 5) {
+                //status="待审核";
+                status = "未出款";
+            }
+            return status;
         };
-        var time = new Date(parseInt(nS) * 1000);
-        var y = time.getFullYear();
-        var m = time.getMonth() + 1;
-        var d = time.getDate();
-        var h = time.getHours();
-        var mm = time.getMinutes();
-        var s = time.getSeconds();
-        return y + '-' + add0(m) + '-' + add0(d) + ' ' + add0(h) + ':' + add0(mm) + ':' + add0(s);
-    };
-})
+    })
 
-.filter('outStatus', function() {
+    .filter('noticeType', function () {
 
-    return function(value) {
-        var status = "";
-        if (value === 1) {
-            status = "已出款";
-        } else if (value === 2) {
-            status = "预备出款";
-        } else if (value === 3) {
-            status = "已取消";
-        } else if (value === 4) {
-            status = "已拒绝";
-        } else if (value === 5) {
-            //status="待审核";
-            status = "未出款";
-        }
-        return status;
-    };
-})
-
-.filter('noticeType', function() {
-
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "类型一";
@@ -58,9 +59,9 @@ angular.module('app.filter')
             return status;
         };
     })
-    .filter('IPLimit', function() {
+    .filter('IPLimit', function () {
 
-        return function(value) {
+        return function (value) {
             var ip = "";
             if (value.length == 0) {
                 ip = "否";
@@ -71,9 +72,9 @@ angular.module('app.filter')
         };
     })
 
-.filter('fiterStatused', function() {
+    .filter('fiterStatused', function () {
 
-        return function(value) {
+        return function (value) {
             var statused = "";
             if (value === 1) {
                 statused = "启用"
@@ -83,9 +84,9 @@ angular.module('app.filter')
             return statused;
         }
     })
-    .filter('buttonStatus', function() {
+    .filter('buttonStatus', function () {
 
-        return function(value) {
+        return function (value) {
             var statused = "";
             if (value === 2) {
                 statused = "启用"
@@ -96,9 +97,9 @@ angular.module('app.filter')
         };
     })
 
-.filter('fiterValid', function() {
+    .filter('fiterValid', function () {
 
-        return function(value) {
+        return function (value) {
             var statused = "";
             if (value === 1) {
                 statused = "有效"
@@ -108,9 +109,9 @@ angular.module('app.filter')
             return statused;
         };
     })
-    .filter('fiterStatused1', function() {
+    .filter('fiterStatused1', function () {
 
-        return function(value) {
+        return function (value) {
             var statused = "";
             if (value === 2) {
                 statused = "启用"
@@ -120,9 +121,9 @@ angular.module('app.filter')
             return statused;
         }
     })
-    .filter('DepositWithdrawal', function() {
+    .filter('DepositWithdrawal', function () {
 
-        return function(value) {
+        return function (value) {
             var statused = "";
             if (value === 1) {
                 statused = "存款"
@@ -132,9 +133,9 @@ angular.module('app.filter')
             return statused;
         };
     })
-    .filter('SuccessFailure', function() {
+    .filter('SuccessFailure', function () {
 
-        return function(value) {
+        return function (value) {
             var statused = "";
             if (value === 1) {
                 statused = "成功"
@@ -144,9 +145,9 @@ angular.module('app.filter')
             return statused;
         };
     })
-    .filter('fiterCX', function() {
+    .filter('fiterCX', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "返佣冲销"
@@ -156,9 +157,9 @@ angular.module('app.filter')
             return status;
         };
     })
-    .filter('YorN', function() {
+    .filter('YorN', function () {
 
-        return function(value) {
+        return function (value) {
             var statused = "";
             if (value === 1) {
                 statused = "是"
@@ -168,9 +169,9 @@ angular.module('app.filter')
             return statused;
         };
     })
-    .filter('YesNo', function() {
+    .filter('YesNo', function () {
 
-        return function(value) {
+        return function (value) {
             var statused = "";
             if (value === 0) {
                 statused = "否"
@@ -180,9 +181,9 @@ angular.module('app.filter')
             return statused;
         };
     })
-    .filter('isShow', function() {
+    .filter('isShow', function () {
 
-        return function(value) {
+        return function (value) {
             var str = "";
             if (value === 0) {
                 str = "正常"
@@ -192,8 +193,8 @@ angular.module('app.filter')
             return str;
         };
     })
-    .filter('currentstate', function() {
-        return function(value) {
+    .filter('currentstate', function () {
+        return function (value) {
             var statused = "";
             if (value === 1) {
                 statused = "启用"
@@ -203,8 +204,8 @@ angular.module('app.filter')
             return statused;
         }
     })
-    .filter('fiterStatuseds', function() {
-        return function(value) {
+    .filter('fiterStatuseds', function () {
+        return function (value) {
             var statuseds = "";
             if (value === 1) {
                 statuseds = "在线"
@@ -214,8 +215,8 @@ angular.module('app.filter')
             return statuseds;
         }
     })
-    .filter('submit', function() {
-        return function(Submit) {
+    .filter('submit', function () {
+        return function (Submit) {
             var Submit = "";
             if (Submit === 1) {
                 Submit = "提交"
@@ -225,8 +226,8 @@ angular.module('app.filter')
             return Submit;
         }
     })
-    .filter('fiterApp', function() {
-        return function(value) {
+    .filter('fiterApp', function () {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "已通过"
@@ -236,8 +237,8 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('fiterStatusE', function() {
-        return function(value) {
+    .filter('fiterStatusE', function () {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "已确认"
@@ -249,8 +250,8 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('fiterType', function() {
-        return function(value) {
+    .filter('fiterType', function () {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "pc"
@@ -264,8 +265,8 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('packetStatus', function() {
-        return function(value) {
+    .filter('packetStatus', function () {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "未开始"
@@ -279,8 +280,8 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('fiterLog', function() {
-        return function(value) {
+    .filter('fiterLog', function () {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "登录成功"
@@ -290,8 +291,8 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('fiterDiaodanStatus', function() {
-        return function(value) {
+    .filter('fiterDiaodanStatus', function () {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "待审核"
@@ -303,8 +304,8 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('formatDate', function() {
-        return function(value) {
+    .filter('formatDate', function () {
+        return function (value) {
             var myDate = new Date(value * 1000);
             var year = myDate.getFullYear().toString();
             var month = myDate.getMonth() + 1;
@@ -318,8 +319,8 @@ angular.module('app.filter')
             return year + '-' + month + '-' + day;
         };
     })
-    .filter('favourable', function() {
-        return function(value) {
+    .filter('favourable', function () {
+        return function (value) {
             var statused = "";
             if (value === 0) {
                 statused = "否"
@@ -330,8 +331,8 @@ angular.module('app.filter')
         }
     })
 
-.filter('noticeTypese', function() {
-        return function(value) {
+    .filter('noticeTypese', function () {
+        return function (value) {
             var statused = "";
             if (value === 1) {
                 statused = "普通公告";
@@ -351,8 +352,8 @@ angular.module('app.filter')
             return statused;
         }
     })
-    .filter('fiterStatusBtn', function() {
-        return function(value) {
+    .filter('fiterStatusBtn', function () {
+        return function (value) {
             var statused = "";
             if (value === 1) {
                 statused = "停用"
@@ -362,9 +363,9 @@ angular.module('app.filter')
             return statused;
         }
     })
-    .filter('logoType', function() {
+    .filter('logoType', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "类型一";
@@ -378,8 +379,8 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('logoForm', function() {
-        return function(value) {
+    .filter('logoForm', function () {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "PC端LOGO"
@@ -389,9 +390,9 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('floatType', function() {
+    .filter('floatType', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "左浮动";
@@ -401,9 +402,9 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('imgStatus', function() {
+    .filter('imgStatus', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "停用";
@@ -413,9 +414,9 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('noticeWay', function() {
+    .filter('noticeWay', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "方式一";
@@ -429,9 +430,9 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('noticeType', function() {
+    .filter('noticeType', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "中间弹框";
@@ -444,9 +445,9 @@ angular.module('app.filter')
         }
     })
     //公司入款方式
-    .filter('incomeWay', function() {
+    .filter('incomeWay', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "公司入款";
@@ -459,9 +460,9 @@ angular.module('app.filter')
         }
     })
     //注册文案模板类型
-    .filter('registerType', function() {
+    .filter('registerType', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "会员注册";
@@ -473,9 +474,9 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('siteArr', function() {
+    .filter('siteArr', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === "1") {
                 status = "全站点";
@@ -485,9 +486,9 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('applicationStatus', function() {
+    .filter('applicationStatus', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "待审核";
@@ -499,9 +500,9 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('clientType', function() {
+    .filter('clientType', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "pc";
@@ -515,9 +516,9 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('sourceType', function() {
+    .filter('sourceType', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 0) {
                 status = "人工存入";
@@ -547,9 +548,9 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('operationTypes', function() {
+    .filter('operationTypes', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "存入";
@@ -559,9 +560,9 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('payType', function() {
+    .filter('payType', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "已支付";
@@ -571,8 +572,8 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('activityType', function() {
-        return function(value) {
+    .filter('activityType', function () {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "类型一";
@@ -586,9 +587,9 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('typeArr', function() {
+    .filter('typeArr', function () {
         var type_id = '';
-        return function(val) {
+        return function (val) {
             if (val == null) {
                 return val = '';
             } else {
@@ -606,7 +607,8 @@ angular.module('app.filter')
                     } else if (arr[i] === "4") {
                         type_id += "wap端";
                     }
-                };
+                }
+                ;
                 var vab = type_id;
                 type_id = ""
                 return vab;
@@ -621,9 +623,9 @@ angular.module('app.filter')
     //         return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/, ' ');
     //     }
     // })
-    .filter('isOpen', function() {
+    .filter('isOpen', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "开启";
@@ -633,9 +635,9 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('siteStatusd', function() {
+    .filter('siteStatusd', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "开启";
@@ -647,8 +649,8 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('configurationType', function() {
-        return function(value) {
+    .filter('configurationType', function () {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "中间";
@@ -660,8 +662,8 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('CashType', function() {
-        return function(value) {
+    .filter('CashType', function () {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "额度转换";
@@ -677,8 +679,8 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('operationType', function() {
-        return function(value) {
+    .filter('operationType', function () {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "增加";
@@ -692,8 +694,8 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('doType', function() {
-        return function(value) {
+    .filter('doType', function () {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "存入";
@@ -703,8 +705,8 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('Recharge', function() {
-        return function(value) {
+    .filter('Recharge', function () {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "第三方入款";
@@ -714,8 +716,8 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('dropType', function() {
-        return function(value) {
+    .filter('dropType', function () {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "掉单审核中";
@@ -728,9 +730,9 @@ angular.module('app.filter')
         }
     })
 
-.filter('trustHtml', function($sce) {
+    .filter('trustHtml', function ($sce) {
 
-        return function(input) {
+        return function (input) {
 
             return $sce.trustAsHtml(input);
             console.log(input);
@@ -738,9 +740,9 @@ angular.module('app.filter')
         }
 
     })
-    .filter('cashType', function() {
+    .filter('cashType', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "额度转换";
@@ -756,9 +758,9 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('thirdType', function() {
+    .filter('thirdType', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "第三方入款";
@@ -768,14 +770,40 @@ angular.module('app.filter')
             return status;
         }
     })
-    .filter('filterQuotaRecord', function() {
+    .filter('filterQuotaRecord', function () {
 
-        return function(value) {
+        return function (value) {
             var status = "";
             if (value === 1) {
                 status = "开启";
             } else if (value === 2) {
                 status = "掉单";
+            }
+            return status;
+        }
+    })
+    //新增请求方式过滤器 -- wdl
+    .filter('routeType', function () {
+        return function (value) {
+            console.log(typeof value);
+            var status = "";
+            switch (value) {
+                case 1 :
+                case "1":
+                    status = "GET";
+                    break;
+                case 2 :
+                case "2":
+                    status = "POST";
+                    break;
+                case 3 :
+                case "3":
+                    status = "PUT";
+                    break;
+                case 4 :
+                case "4":
+                    status = "DELETE";
+                    break
             }
             return status;
         }

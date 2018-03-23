@@ -1,4 +1,3 @@
-
 angular.module('app.MainEngine', [
     'ui.router'
 ]).config(function($stateProvider) {
@@ -16,17 +15,52 @@ angular.module('app.MainEngine', [
                 }
             }
         })
+        .state('app.MainEngine.mainEngine', {
+            url: '/MainEngine/mainEngine',
+            data: {
+                title: '主机管理'
+            },
+            views: {
+                "content@app": {
+                    controller: 'MainEngineCtrl',
+                    templateUrl: "views/mainEngine/views/mainEngine.html"
+                }
+            }
+        })
+        .state('app.MainEngine.mainEngineEdit', {
+            url: '/MainEngine/mainEngineEdit',
+            data: {
+                title: '编辑主机'
+            },
+            views: {
+                "content@app": {
+                    controller: 'MainEngineEditCtrl',
+                    templateUrl: "views/mainEngine/views/mainEngineEdit.html"
+                }
+            }
+        })
+        .state('app.MainEngine.MainEngineDetail', {
+            url: '/MainEngine/mainEngineDetail',
+            data: {
+                title: '主机详情'
+            },
+            views: {
+                "content@app": {
+                    controller: 'MainEngineDetailCtrl',
+                    templateUrl: "views/mainEngine/views/mainEngineDetail.html"
+                }
+            }
+        })
 
-    .state('app.MainEngine.mainEngine', {
-        url: '/MainEngine/mainEngine',
+    .state('app.MainEngine.area', {
+        url: '/MainEngine/area',
         data: {
-            // title: '开户人管理'
-            title: 'A_11'
+            title: '区域管理'
         },
         views: {
             "content@app": {
-                controller: 'MainEngineCtrl',
-                templateUrl: "views/mainEngine/views/mainEngine.html"
+                controller: 'areaCtrl',
+                templateUrl: "views/mainEngine/views/area.html"
             }
         }
     })

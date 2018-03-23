@@ -1,0 +1,556 @@
+
+<style>
+	.bgRow>div {
+		background-color: #ccc;
+		padding: 5px;
+	}
+
+	.rowBorder {
+		border: 1px solid #ccc;
+	}
+
+	.rowBorder:nth-of-type(1),
+	.rowBorder:nth-of-type(2),
+	.rowBorder:nth-of-type(3),
+	.rowBorder:nth-of-type(4) {
+		border-right: none;
+	}
+
+	.rowBorder input {
+		border: none;
+	}
+
+	.rowBorder .input-group-addon {
+		border: none;
+	}
+</style>
+
+
+
+
+<div id="content">
+	<section widget-grid id="widget-grid">
+		<div class="row">
+			<article class="col-sm-12">
+				<div id="todo-widget" jarvis-widget data-widget-editbutton="false" data-widget-color="blue">
+					<header>
+						<span class="widget-icon">
+							<i class="fa fa-table"></i>
+						</span>
+						<h2>{{type===1?'新增':'修改'}}主机</h2>
+					</header>
+					<div class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+						<!-- Widget ID (each widget will need unique ID)-->
+						<div class="jarviswidget well transparent" id="wid-id-9" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false" role="widget">
+							<!-- widget options:
+                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+                                data-widget-colorbutton="false"
+                                data-widget-editbutton="false"
+                                data-widget-togglebutton="false"
+                                data-widget-deletebutton="false"
+                                data-widget-fullscreenbutton="false"
+                                data-widget-custombutton="false"
+                                data-widget-collapsed="true"
+                                data-widget-sortable="false"
+                                -->
+							<!-- widget div-->
+							<div role="content">
+								<!-- widget content -->
+								<div class="widget-body" style="background: #f3f3f3;">
+
+
+									<!-- 基本信息 -->
+									<div class="panel-group smart-accordion-default" id="accordion">
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" aria-expanded="true" class="">  <i class="fa fa-lg fa-angle-up pull-right"></i>基本信息</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true" style="">
+												<div class="panel-body">
+													<div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label">ID:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div style="line-height: 32px;">
+																{{ID}}
+															</div>
+														</div>
+
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label"><b style="color: #FF0000;">*</b>品牌:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="form-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入品牌" ng-model="info.brand">
+															</div>
+														</div>
+
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label"><b style="color: #FF0000;">*</b>型号:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="form-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入型号" ng-model="info.model">
+															</div>
+														</div>
+													</div><!-- row -end -->
+
+													<div class="row"><!-- row -start -->
+
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label">授权码:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="form-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入授权码" ng-model="info.authorize">
+															</div>
+														</div>
+
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label">SN:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="form-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入SN" ng-model="info.sn">
+															</div>
+														</div>
+
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label">备注:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="form-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入备注" ng-model="info.remark">
+															</div>
+														</div>
+													</div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- OS信息 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i>OS信息</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+													<div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label">系统:</div>
+														<div class="col-md-2 col-xs-8 col-lg-2">
+															<div class="form-group" ng-init="info.system='0'">
+																<select class="form-control" ng-model="info.system">
+																	<option value="0">请选择</option>
+																	<option ng-value="o.id" ng-repeat="o in mainEngineArea">{{o.title}}</option>
+																</select>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-4 col-lg-2  input-label">系统版本:</div>
+														<div class="col-md-2 col-xs-8 col-lg-2">
+															<div class="form-group" ng-init="info.systemVersion='0'">
+																<select class="form-control" ng-model="info.systemVersion">
+																	<option value="0">请选择</option>
+																	<option ng-value="o.id" ng-repeat="o in mainEngineArea">{{o.title}}</option>
+																</select>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-4 col-lg-2  input-label">内核版本:</div>
+														<div class="col-md-2 col-xs-8 col-lg-2">
+															<div class="form-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入内核版本" ng-model="info.kernelVersion">
+															</div>
+														</div>
+													</div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- CPU -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i><b style="color: #FF0000;">*</b>CPU</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+													<div class="row bgRow"><!-- row -start -->
+														<div class="text-center col-md-1 col-xs-2 col-lg-2  col-md-offset-1 col-lg-offset-1">型号</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">个数</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">核心</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">线程</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">主频</div>
+													</div><!-- row -end -->
+
+													<div class="row form-group"><!-- row -start -->
+														<div class="col-md-1 col-xs-2 col-lg-2 col-md-offset-1 col-lg-offset-1 rowBorder">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入型号" ng-model="info.cpuModel">
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入个数" ng-model="info.cpuNum">
+																<span class="input-group-addon">个</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入核心" ng-model="info.cpuCore">
+																<span class="input-group-addon">核</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入线程" ng-model="info.cpuLine">
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入主频" ng-model="info.cpuFreq">
+																<span class="input-group-addon">GHz</span>
+															</div>
+														</div>
+													</div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- 内存 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i><b style="color: #FF0000;">*</b>内存</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+													<div class="row form-group"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label">大小:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入核心" ng-model="info.memorySize">
+																<span class="input-group-addon">GB</span>
+															</div>
+														</div>
+
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label">类型:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="form-group" ng-init="info.memoryType='0'">
+																<select class="form-control" ng-model="info.memoryType">
+																	<option value="0">请选择</option>
+																	<option ng-value="o.id" ng-repeat="o in mainEngineArea">{{o.title}}</option>
+																</select>
+															</div>
+														</div>
+													</div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- 硬盘 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i><b style="color: #FF0000;">*</b>硬盘</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+													<div class="row bgRow"><!-- row -start -->
+														<div class="text-center col-md-1 col-xs-4 col-lg-4  col-md-offset-1 col-lg-offset-1">类型</div>
+														<div class="text-center col-md-1 col-xs-4 col-lg-4">容量</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">操作</div>
+													</div><!-- row -end -->
+
+													<!-- 遍历硬盘数组 -start -->
+													<div class="row form-group" ng-show="hardDiskArr.length!=0" ng-repeat="hd in hardDiskArr track by $index"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-4 col-md-offset-1 col-xs-offset-1 col-lg-offset-1 rowBorder" style="height: 40px;">
+															<div class="form-group col-md-1 col-xs-10 col-lg-10 col-lg-offset-1" style="margin-bottom: 0;margin-top: 4px;">
+																<select class="form-control" ng-options="v.value as v.name for v in json.option_hardDiskType"  ng-model="hd.hdType" ng-disabled="hd.disabled">
+
+																</select>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-4 col-lg-4 rowBorder" style="height: 40px;">
+															<div class="input-group" style="margin-top: 4px;">
+																<input type="text" class="form-control inp_2" placeholder="请输入容量" ng-model="hd.hdCapacity" ng-disabled="hd.disabled">
+																<span class="input-group-addon">GB</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder" style="border-right: 1px solid #ccc;height: 40px;">
+															<div class="input-group text-center" style="line-height: 32px;width: 100%;margin-top: 4px;">
+																<div ng-show="hd.showEditAndDel">
+																	<button  class="btn btn-xs btn-primary" ng-click="editHardDisk(hd)">编辑</button>
+																	<button  class="btn btn-xs btn-danger mgl10" ng-click="deleteHardDisk($index,hd)">删除</button>
+																</div>
+																<div ng-show="!hd.showEditAndDel">
+																	<button  class="btn btn-xs btn-primary" ng-click="sureEditHardDisk(hd)">确定</button>
+																	<button  class="btn btn-xs btn-danger mgl10" ng-click="cancelEditHardDisk(hd,$index)">取消</button>
+																</div>
+															</div>
+														</div>
+													</div><!-- row -start -->
+													<!-- 遍历硬盘数组 -end -->
+
+													<!-- 添加硬盘信息按钮 -start -->
+													<div class="row text-center" ng-show="!showColumn">
+														<button class="btn btn-primary mgt20" ng-click="addHardDisk()">add</button>
+													</div>
+													<!-- 添加硬盘信息按钮 -end -->
+
+													<!-- 确定、取消硬盘信息按钮 -start -->
+													<div class="row form-group" ng-show="showColumn">
+														<div class="col-md-1 col-xs-4 col-lg-4 col-md-offset-1 col-xs-offset-1 col-lg-offset-1 rowBorder" style="height: 40px;">
+															<div class="form-group col-md-1 col-xs-10 col-lg-10 col-lg-offset-1" style="margin-bottom: 0;margin-top: 4px;">
+																<select class="form-control" ng-options="v.value as v.name for v in json.option_hardDiskType" ng-init="hardDiskObj.hdType='1'" ng-model="hardDiskObj.hdType">
+
+																</select>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-4 col-lg-4 rowBorder" style="height: 40px;">
+															<div class="input-group" style="margin-top: 4px;">
+																<input type="text" class="form-control inp_2" placeholder="请输入容量" ng-model="hardDiskObj.hdCapacity">
+																<span class="input-group-addon">GB</span>
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder" style="border-right: 1px solid #ccc;height: 40px;">
+															<div class="input-group text-center" style="line-height: 32px;width: 100%;margin-top: 4px;">
+																<button class="btn btn-xs btn-primary" ng-click="sureaddHardDisk(hardDiskObj)">确定</button>
+																<button class="btn btn-xs btn-danger mgl10" ng-click="cancelHardDisk()">取消</button>
+
+															</div>
+														</div>
+													</div>
+													<!-- 确定、取消硬盘信息按钮 -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- RAID卡 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i><b style="color: #FF0000;">*</b>RAID卡</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+													<div class="row form-group"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-2  input-label">型号:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入型号" ng-model="info.raidCardModel">
+															</div>
+														</div>
+
+														<div class="col-md-1 col-xs-4 col-lg-2  input-label">RAID等级:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="form-group" ng-init="info.raidCardLevel='0'">
+																<select class="form-control" ng-model="info.raidCardLevel">
+																	<option value="0">未使用</option>
+																	<option ng-value="o.id" ng-repeat="o in mainEngineArea">{{o.title}}</option>
+																</select>
+															</div>
+														</div>
+													</div><!-- row -start -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- IPMI -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i><b style="color: #FF0000;">*</b>IPMI</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+													<div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-2  input-label">IP:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="form-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入IP" ng-model="info.ipmiIp">
+															</div>
+														</div>
+
+														<div class="col-md-1 col-xs-4 col-lg-2  input-label">MAC:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="form-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入MAC" ng-model="info.ipmiMac">
+															</div>
+														</div>
+													</div><!-- row -end -->
+
+													<div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-2  input-label">USER账户:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="form-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入账户" ng-model="info.ipmiAccount">
+															</div>
+														</div>
+
+														<div class="col-md-1 col-xs-4 col-lg-2  input-label">USER密码:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="form-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入密码" ng-model="info.ipmiPassword">
+															</div>
+														</div>
+													</div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- 网卡 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"  class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i><b style="color: #FF0000;">*</b>网卡</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+													<div class="row bgRow"><!-- row -start -->
+														<div class="text-center col-md-1 col-xs-2 col-lg-2  col-md-offset-1 col-lg-offset-1">网卡名</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">IP</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">MAC</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">接口速率</div>
+														<div class="text-center col-md-1 col-xs-2 col-lg-2">操作</div>
+													</div><!-- row -end -->
+
+													<!-- 遍历网卡数组 -start -->
+													<div class="row form-group" ng-show="networkCardArr.length!=0" ng-repeat="nc in networkCardArr track by $index"><!-- row -start -->
+														<div class="col-md-1 col-xs-2 col-lg-2 col-md-offset-1 col-lg-offset-1 rowBorder">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入网卡名" ng-model="nc.title" ng-disabled="nc.disabled">
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入IP" ng-model="nc.ip" ng-disabled="nc.disabled">
+
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入MAC" ng-model="nc.mac" ng-disabled="nc.disabled">
+
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入接口速率" ng-model="nc.rate" ng-disabled="nc.disabled">
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group text-center" style="line-height: 32px;width: 100%;">
+																<div ng-show="nc.showEditAndDel">
+																	<button  class="btn btn-xs btn-primary" ng-click="editNetworkCard(nc)">编辑</button>
+																	<button  class="btn btn-xs btn-danger mgl10" ng-click="deleteNetworkCard($index,nc)">删除</button>
+																</div>
+																<div ng-show="!nc.showEditAndDel">
+																	<button  class="btn btn-xs btn-primary" ng-click="sureEditNetworkCard(nc)">确定</button>
+																	<button  class="btn btn-xs btn-danger mgl10" ng-click="cancelEditNetworkCard(nc,$index)">取消</button>
+																</div>
+															</div>
+
+														</div>
+													</div><!-- row -end -->
+													<!-- 遍历网卡数组 -start -->
+
+													<!-- 添加网卡按钮 -start -->
+													<div class="row text-center" ng-show="!showNetworkCardColumn">
+														<button class="btn btn-primary mgt20" ng-click="addNetworkCard()">add</button>
+													</div>
+													<!-- 添加网卡按钮 -end -->
+
+													<!-- 确定、取消网卡信息按钮 -start -->
+													<div class="row form-group" ng-show="showNetworkCardColumn">
+														<div class="col-md-1 col-xs-2 col-lg-2 col-md-offset-1 col-lg-offset-1 rowBorder">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入网卡名" ng-model="networkCardObj.title">
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入IP" ng-model="networkCardObj.ip">
+
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入MAC" ng-model="networkCardObj.mac">
+
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入接口速率" ng-model="networkCardObj.rate">
+															</div>
+														</div>
+														<div class="col-md-1 col-xs-2 col-lg-2 rowBorder">
+															<div class="input-group text-center" style="line-height: 32px;width: 100%;">
+																<button class="btn btn-xs btn-primary" ng-click="sureAddNetworkCard(networkCardObj)">确定</button>
+																<button class="btn btn-xs btn-danger mgl10" ng-click="cancelNetworkCard()">取消</button>
+															</div>
+
+														</div>
+													</div>
+													<!-- 确定、取消网卡信息按钮 -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- 用户 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i><b style="color: #FF0000;">*</b>用户</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+													<div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label">账户:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="form-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入账户" ng-model="info.username">
+															</div>
+														</div>
+
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label">密码:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="form-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入密码" ng-model="info.password">
+															</div>
+														</div>
+													</div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<!-- 业务 -->
+										<div class="panel panel-default mgb20">
+											<div class="panel-heading">
+												<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" class="collapsed" aria-expanded="true">  <i class="fa fa-lg fa-angle-up pull-right"></i><b style="color: #FF0000;">*</b>业务</a></h4>
+											</div>
+											<div class="panel-collapse collapse in" aria-expanded="true">
+												<div class="panel-body">
+													<div class="row"><!-- row -start -->
+														<div class="col-md-1 col-xs-4 col-lg-1  input-label">月租:</div>
+														<div class="col-md-2 col-xs-8 col-lg-3">
+															<div class="form-group">
+																<input type="text" class="form-control inp_2" placeholder="请输入月租" ng-model="info.rent">
+															</div>
+														</div>
+													</div><!-- row -end -->
+												</div>
+											</div>
+										</div>
+
+
+										<div class="clearfix">
+											<button class="btn btn-primary fr" ng-click="saveInfo(info)">保存</button>
+										</div>
+
+
+									</div>
+								</div>
+								<!-- end widget content -->
+							</div>
+							<!-- end widget div -->
+						</div>
+						<!-- end widget -->
+					</div>
+					<!--end-ui-sortable-->
+				</div>
+				<!--end-widget-->
+			</article>
+		</div>
+	</section>
+</div>
