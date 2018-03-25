@@ -4,12 +4,13 @@
 			<article class="col-sm-12">
 				<div id="todo-widget" jarvis-widget data-widget-editbutton="false" data-widget-color="blue">
 					<header>
+
 						<span class="widget-icon">
 							<i class="fa fa-table"></i>
 						</span>
 						<div class="widget-toolbar">
                             <button class="btn btn-xs btn-col-fff" ng-class="{active: newTodo}" ng-click="toggleAdd()"><i ng-class="{ 'fa fa-plus': !newTodo, 'fa fa-times': newTodo}"></i> 筛选</button>
-							<button class="btn btn-col-fff btn-xs" data-toggle="modal" data-target="#addCustomerModal">新增客户</button>
+							<button class="btn btn-col-fff btn-xs" ng-click="editCustomerModal(1)">新增客户</button>
 						</div>
 					</header>
 
@@ -33,7 +34,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <form class="form-inline" method="post">
+                            <form class="form-inline">
                                 <div class="table-scroll">
                                     <table class="table table-bordered table-hover">
                                         <thead>
@@ -50,27 +51,30 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="g in hostList"  class="text-center">
-                                                <td><a class="text-red" ng-click="goMainEngineDetail(g.ids)">{{g.username}}</a></td>
+                                            <tr ng-repeat="g in userList"  class="text-center">
+                                                <td><a class="cusor" style="color:#0066FF" ng-click="goMainEngineDetail(g.ids)">{{g.username}}</a></td>
                                                 <td>{{g.skype}}</td>
                                                 <td>{{g.qq}}</td>
                                                 <td>{{g.phone}}</td>
                                                 <td>{{g.wechat}}</td>
                                                 <td>{{g.email}}</td>
                                                 <td>{{g.dutyEmail}}</td>
-                                                <td>{{g.orderIn}}/{{g.orderRenew}}/{{g.orderOver}}</td>
                                                 <td>
-                                                    <button class="btn btn-xs btn-primary" ng-click="updateMainEngine(g.id)">修改</button>
-                                                    <button class="btn btn-xs btn-danger" ng-click="updateMainEngine(g.id)">删除</button>
+                                                    <a class="cursor" style="color:#00FF33;">{{g.orderIn}}</a>
+                                                    /
+                                                    <a class="cursor" style="color:#0066FF">{{g.orderRenew}}</a> 
+                                                    /
+                                                    <a class="cursor" style="color:#FF0000">{{g.orderOver}}</a> 
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-xs btn-primary" ng-click="editCustomerModal(2,g)">修改</button>
+                                                    <button class="btn btn-xs btn-danger" ng-click="deleteCustomer(g,$index)">删除</button>
                                                 </td>
                                             </tr>
-
                                         </tbody>
                                     </table>
                                 </div>
                                 <tm-pagination conf="paginationConf"></tm-pagination>
-
-
                             </form>
                         </div>
                     </div>
@@ -83,102 +87,117 @@
 
 
 
-<!--新增主机弹框-->
-    <div class="modal fade" id="addCustomerModal" tabindex="-1" role="dialog" aria-labelledby="addAccount" aria-hidden="true">
+<!--新增客户弹框-->
+    <div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="addAccount" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         &times;
                     </button>
-                    <h4 class="modal-title" id="addAccount">主机归属</h4>
+                    <h4 class="modal-title" id="addAccount">{{type==1?"新增":"修改"}}客户</h4>
                 </div>
                 <div class="modal-body">
-                        <div class="row">
-                        	<div class="col-md-1 col-xs-4 col-lg-4 input-label">区域：</div>
-	                		<div class="col-md-2 col-xs-4 col-lg-4">
-	                			<div class="form-group" ng-init="g.areaId='0'">
-	                                <select class="form-control" ng-model="g.areaId">
-	                                    <option value="0">全部</option>
-	                                    <option ng-value="i.value" ng-repeat="i in mainEngineArea">{{i.title}}</option>
-	                                </select>
-	                            </div>
-	                		</div>
+                    <div class="row">
+                    	<div class="col-md-1 col-xs-3 col-lg-3 input-label">
+                            <b style="color: #FF0000;">*</b>客户姓名：
                         </div>
-                        <div class="row">
-                        	<div class="col-md-1 col-xs-4 col-lg-4 input-label">机房：</div>
-	                		<div class="col-md-2 col-xs-4 col-lg-4">
-	                			<div class="form-group" ng-init="g.roomId='0'">
-	                                <select class="form-control" ng-model="g.roomId">
-	                                    <option value="0">全部</option>
-	                                    <option ng-value="i.value" ng-repeat="i in mainEngineRoom">{{i.title}}</option>
-	                                </select>
-	                            </div>
-	                		</div>
-                        </div>
-                        <div class="row">
+                		<div class="col-md-2 col-xs-6 col-lg-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control inp_2" placeholder="请输入" ng-model="info.username">
+                            </div>
+                		</div>
+                    </div>
 
-                        	<div class="col-md-1 col-xs-4 col-lg-4 input-label">机柜：</div>
-	                		<div class="col-md-2 col-xs-4 col-lg-4">
-	                			<div class="form-group" ng-init="g.cabinetId='0'">
-	                                <select class="form-control" ng-model="g.cabinetId">
-	                                    <option value="0">全部</option>
-	                                    <option ng-value="i.value" ng-repeat="i in mainEngineCabinet">{{i.title}}</option>
-	                                </select>
-	                            </div>
-	                		</div>
+                    <div class="row">
+                        <div class="col-md-1 col-xs-3 col-lg-3 input-label">
+                            Skype：
                         </div>
+                        <div class="col-md-2 col-xs-6 col-lg-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control inp_2" placeholder="请输入" ng-model="info.skype">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1 col-xs-3 col-lg-3 input-label">
+                            QQ：
+                        </div>
+                        <div class="col-md-2 col-xs-6 col-lg-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control inp_2" placeholder="请输入" ng-model="info.qq">
+                            </div>
+                        </div>
+                    </div>
+                       
+                    <div class="row">
+                        <div class="col-md-1 col-xs-3 col-lg-3 input-label">
+                            微信：
+                        </div>
+                        <div class="col-md-2 col-xs-6 col-lg-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control inp_2" placeholder="请输入" ng-model="info.wechat">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-1 col-xs-3 col-lg-3 input-label">
+                            <b style="color: #FF0000;">*</b>联系电话：
+                        </div>
+                        <div class="col-md-2 col-xs-6 col-lg-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control inp_2" placeholder="请输入" ng-model="info.phone">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1 col-xs-3 col-lg-3 input-label">
+                            邮箱：
+                        </div>
+                        <div class="col-md-2 col-xs-6 col-lg-6 pr">
+                            <div class="form-group">
+                                <input type="text" class="form-control inp_2" placeholder="请输入" ng-model="info.email">
+                            </div>
+                            <div class="questionMark pa" data-toggle="tooltip" 
+                            data-placement="top" title="邮箱格式如：xxx@168.com、
+                            xxx@qq.com">?</div>
+                        </div>
+                    </div>
+                
+
+                    <div class="row">
+                        <div class="col-md-1 col-xs-3 col-lg-3 input-label">
+                            <b style="color: #FF0000;">*</b>负责人：
+                        </div>
+                        <div class="col-md-2 col-xs-6 col-lg-6">
+                            <div class="form-group">
+                                <select class="form-control" ng-model="info.dutyEmail">
+                                    <option value="0">请选择</option>
+                                    <option ng-value="o.id" ng-repeat="o in mainEngineArea">{{o.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" ng-click="addCustomerModalSure(g)">确定</button>
+                    <button type="button" class="btn btn-primary" ng-click="editCustomerModalSure(info)">确定</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-<!--绑定负责人弹框-->
-    <div class="modal fade" id="bindLeaderModal" tabindex="-1" role="dialog" aria-labelledby="bindLeader" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h4 class="modal-title" id="bindLeader">绑定负责人</h4>
-                </div>
-                <div class="modal-body">
-                        <div class="row">
-                        	<div class="col-md-1 col-xs-4 col-lg-4 input-label">主负责人：</div>
-	                		<div class="col-md-2 col-xs-4 col-lg-5">
-	                			<div class="form-group" ng-init="dutyId='0'">
-	                                <select class="form-control" ng-model="dutyId">
-	                                    <option value="0">请选择</option>
-	                                    <option ng-value="o.id" ng-repeat="o in dutyObj.duty">{{o.name}}</option>
-	                                </select>
-	                            </div>
-	                		</div>
-                        </div>
-                        <div class="row">
-                        	<div class="col-md-1 col-xs-4 col-lg-4 input-label">副负责人：</div>
-	                		<div class="col-md-2 col-xs-4 col-lg-5">
-	                			<div class="form-group">
-
-	                                <select class="form-control selectpicker" title="请选择" multiple data-max-options="2">
-	                                    <!--<option value="id">name</option> jquery塞进来的-->
-	                                </select>
-
-
-	                            </div>
-	                		</div>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" ng-click="bindLeaderModalSure(hostList,dutyId)">确定</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<style>
+    .questionMark{    
+        top: 6px;
+        right: -20px;
+        width: 18px;
+        border: 1px solid;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 18px;
+    }
+</style>

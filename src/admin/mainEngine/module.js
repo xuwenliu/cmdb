@@ -5,7 +5,7 @@ angular.module('app.MainEngine', [
         .state('app.MainEngine', {
             abstract: true,
             data: {
-                title: 'MainEngine'
+                title: '资源池管理'
             },
             resolve: {
                 srcipts: function(lazyScript) {

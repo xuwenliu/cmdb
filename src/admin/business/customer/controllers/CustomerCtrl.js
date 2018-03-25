@@ -25,26 +25,30 @@ angular.module('app.Business').controller('CustomerCtrl', function($scope,
 
     var GetCustomerList = function(data) {
         var postData = {
-                page: $scope.paginationConf.currentPage,
-                pageSize: $scope.paginationConf.itemsPerPage,
-                username: data.username,
-                paiXu: $scope.order_by,
+            page: $scope.paginationConf.currentPage,
+            pageSize: $scope.paginationConf.itemsPerPage,
+            paiXu: $scope.order_by,
+        }
+        if(data){
+            postData.username=data.username;
+        }
+        
+        BusinessService.getCustomerList(postData).then(function(res) {
+            console.log(postData);
+            console.log("获取客户列表数据：");
+            console.log(res);
+            if (res.code) {
+                popupSvc.smallBox("fail", res.msg);
+            } else {
+                $scope.paginationConf.totalItems = res.data
+                    .meta.count;
+                    $scope.userList = res.data.data.data;
             }
-            /*BusinessService.getCustomerList(postData).then(function(res) {
-                console.log(postData);
-                console.log("获取客户列表数据：");
-                console.log(res);
-                if (res.code) {
-                    popupSvc.smallBox("fail", res.msg);
-                } else {
-                    $scope.paginationConf.totalItems = res.data
-                        .meta.count;
-                }
-            })*/
+        })
     };
-    /*$scope.$watch(
+    $scope.$watch(
         'paginationConf.currentPage + paginationConf.itemsPerPage',
-        GetCustomerList);*/
+        GetCustomerList);
 
     /**
      * 点击搜索
@@ -54,5 +58,59 @@ angular.module('app.Business').controller('CustomerCtrl', function($scope,
         console.log(filter);
         GetCustomerList(filter);
     };
+    $scope.info = {};
+    /**
+     * 删除客户
+    */
+    $scope.deleteCustomer = function(dt,index){
+        var postData = {
+            id:dt.userId
+        }
+        popupSvc.smartMessageBox($rootScope.getWord("确定删除该客户吗？"), function(){
+            BusinessService.deleteCustomer(postData).then(function(res){
+                if(res.data.data===null){
+                    popupSvc.smallBox("success", "删除成功");
+                    $scope.userList.splice(index,1);
+                }
+            })
+        });
+    }
+    /**
+     * 
+     * @param t：1=新增 2=修改
+     */
+    $scope.editCustomerModal = function(t,dt) {
+        $scope.info = {};
+        $scope.type = t;
+        if(dt){
+            $scope.info = angular.copy(dt);
+        }
+        $("#customerModal").modal("show");
+    }
 
+    $('[data-toggle="tooltip"]').tooltip();
+    $scope.editCustomerModalSure = function(dt) {
+        console.log(dt);
+        console.log($scope.userId)
+        if($scope.type==1){//新增
+            BusinessService.addCustomer(dt).then(function(res){
+                if(res.data.data===null){
+                    $scope.userId="";
+                    popupSvc.smallBox("success", "添加成功");
+                    $("#customerModal").modal("hide");
+                    $scope.info = {};
+                }
+            })
+        }else {//修改
+            BusinessService.updateCustomer($scope.info).then(function(res){
+                console.log($scope.info);
+                if(res.data.data===null){
+                    $scope.userId="";
+                    popupSvc.smallBox("success", "修改成功");
+                    $("#customerModal").modal("hide");
+                    $scope.info = {};
+                }
+            })
+        }
+    }
 })

@@ -42,6 +42,10 @@ appConfig.apiUrls = {
         "delArea": "/area/delete",
         "addArea": "/area/add"
     },
+    //客户管理
+    CUSTOMER:{
+        "user":"/user",//GET 客户列表 DELETE 删除客户
+    },
     //功能管理 --wdl
     POWER_LIST: "/power/list", //获取功能列表
     POWER_ADD: "/power", //新增功能

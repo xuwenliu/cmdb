@@ -1095,3 +1095,7 @@ nav ul li{cursor: pointer}
 /*float*/
 .fl{float:left;}
 .fr{float: right;}
+
+/*position*/
+.pr{position: relative;}
+.pa{position: absolute;};
